@@ -1,0 +1,8 @@
+0.6
+2018.1
+Apr  4 2018
+19:30:32
+C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_controller_master.v,1696872854,verilog,,,,i2c_controller_master,,,,,,,,
+C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_master_test.v,1696872854,verilog,,,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_module.v,i2c_test,,,,,,,,
+C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_module.v,1696872854,verilog,,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_master_test.v,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_controller_master.v,i2c_module,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.sim/sim_1/behav/xsim/glbl.v,1522801934,verilog,,,,glbl,,,,,,,,
