@@ -1,0 +1,21033 @@
+$date
+   Wed Oct 25 19:06:31 2023
+$end
+$version
+  2018.1
+$end
+$timescale
+  1ps
+$end
+$scope module I2C_tb $end
+$var reg 1 ! CLK $end
+$var reg 1 " CLR $end
+$var reg 1 # CE $end
+$var reg 3 $ CMD [2:0] $end
+$var tri 1 % SCL $end
+$var tri 1 & SDA $end
+$var reg 1 ' SDA_DRV $end
+$var wire 1 ( RDY $end
+$var reg 1 ) XC_RQ $end
+$var reg 8 * DI [7:0] $end
+$var wire 8 + DQ [7:0] $end
+$var reg 1 , ACK_I $end
+$var wire 1 - ACK_Q $end
+$var parameter 3 . COMMAND_START [2:0] $end
+$var parameter 3 / COMMAND_STOP [2:0] $end
+$var parameter 3 0 COMMAND_WR [2:0] $end
+$var parameter 3 1 COMMAND_RD [2:0] $end
+$var parameter 3 2 COMMAND_REPEAT_START [2:0] $end
+$scope module UUT $end
+$var wire 1 3 clk $end
+$var wire 1 4 reset_n $end
+$var wire 1 5 activate $end
+$var wire 3 6 command [2:0] $end
+$var wire 11 7 divider [10:0] $end
+$var wire 8 8 data_in [7:0] $end
+$var wire 1 9 ack_i $end
+$var wire 8 + data_out [7:0] $end
+$var wire 1 : byte_processed $end
+$var wire 1 - ack $end
+$var wire 1 ( ready $end
+$var wire 1 % scl $end
+$var wire 1 & sda $end
+$var reg 4 ; current_state [3:0] $end
+$var reg 4 < next_state [3:0] $end
+$var reg 1 = current_sda $end
+$var reg 1 > next_sda $end
+$var reg 1 ? current_scl $end
+$var reg 1 @ next_scl $end
+$var reg 1 A data_phase $end
+$var reg 9 B current_transmit [8:0] $end
+$var reg 9 C next_transmit [8:0] $end
+$var reg 9 D current_receive [8:0] $end
+$var reg 9 E next_receive [8:0] $end
+$var reg 11 F fdv [10:0] $end
+$var reg 3 G current_command [2:0] $end
+$var reg 3 H next_command [2:0] $end
+$var reg 4 I current_bit [3:0] $end
+$var reg 4 J next_bit [3:0] $end
+$var reg 1 K current_byte_processed $end
+$var reg 1 L next_byte_processed $end
+$var reg 1 M ready_reg $end
+$var wire 1 N sda_assert $end
+$var wire 1 O nack $end
+$var wire 16 P half_tick [15:0] $end
+$var wire 16 Q quarter_tick [15:0] $end
+$var wire 1 R fdv_en $end
+$var wire 1 S ce $end
+$var wire 1 T bit_ce $end
+$var parameter 32 U FDV_W [31:0] $end
+$var parameter 5 V STATE_IDLE [4:0] $end
+$var parameter 5 W STATE_START_1 [4:0] $end
+$var parameter 5 X STATE_START_2 [4:0] $end
+$var parameter 5 Y STATE_START_3 [4:0] $end
+$var parameter 5 Z STATE_START_4 [4:0] $end
+$var parameter 5 [ STATE_HOLD [4:0] $end
+$var parameter 5 \ STATE_STOP_1 [4:0] $end
+$var parameter 5 ] STATE_STOP_2 [4:0] $end
+$var parameter 5 ^ STATE_STOP_3 [4:0] $end
+$var parameter 5 _ STATE_STOP_4 [4:0] $end
+$var parameter 5 ` STATE_DATA_1 [4:0] $end
+$var parameter 5 a STATE_DATA_2 [4:0] $end
+$var parameter 5 b STATE_DATA_3 [4:0] $end
+$var parameter 5 c STATE_DATA_4 [4:0] $end
+$var parameter 5 d STATE_DATA_END [4:0] $end
+$var parameter 3 e COMMAND_START [2:0] $end
+$var parameter 3 f COMMAND_STOP [2:0] $end
+$var parameter 3 g COMMAND_WR [2:0] $end
+$var parameter 3 h COMMAND_RD [2:0] $end
+$upscope $end
+$scope module I2C_BHV $end
+$var wire 1 % SCL $end
+$var wire 1 & SDA $end
+$var integer 32 i STATE $end
+$var reg 7 j ADDR [6:0] $end
+$var reg 1 k RW $end
+$var reg 8 l DATA [7:0] $end
+$var reg 8 m DATA_RD [7:0] $end
+$var reg 1 n ACK $end
+$var reg 1 o SCL_DRV $end
+$var reg 1 p SDA_DRV $end
+$var reg 1 q SDA_LAST $end
+$var reg 1 r SCL_LAST $end
+$var reg 1 s SCL_HC $end
+$var reg 1 t SDA_HC $end
+$var time 64 u SDA_EVENT $end
+$var time 64 v SCL_EVENT $end
+$var time 64 w SCL_WIDTH $end
+$var time 64 x DY $end
+$var time 64 y SDA_SETUP $end
+$var time 64 z SDA_HOLD $end
+$var reg 128 { DEV_ADDR [127:0] $end
+$var parameter 32 | SDA_SU [31:0] $end
+$var parameter 32 } SCL_LO [31:0] $end
+$var parameter 32 ~ SCL_HI [31:0] $end
+$var parameter 32 !! SCL_H_TO_SDA_H [31:0] $end
+$var parameter 32 "! SCL_H_TO_SDA_L [31:0] $end
+$var parameter 32 #! ADDR_1F_00 [31:0] $end
+$var parameter 32 $! ADDR_3F_20 [31:0] $end
+$var parameter 32 %! ADDR_5F_40 [31:0] $end
+$var parameter 32 &! ADDR_7F_60 [31:0] $end
+$var parameter 32 '! _fu_param0_274 [31:0] $end
+$var parameter 32 (! _fu_param1_274 [31:0] $end
+$var parameter 32 )! _fu_param2_274 [31:0] $end
+$var parameter 32 *! _fu_param3_274 [31:0] $end
+$var parameter 32 +! _fu_param4_274 [31:0] $end
+$var parameter 32 ,! _fu_param5_274 [31:0] $end
+$var parameter 32 -! _fu_param6_274 [31:0] $end
+$var parameter 32 .! _fu_param7_274 [31:0] $end
+$var parameter 32 /! _fu_param8_274 [31:0] $end
+$var parameter 32 0! _fu_param9_274 [31:0] $end
+$var parameter 32 1! _fu_param10_274 [31:0] $end
+$var parameter 32 2! _fu_param11_274 [31:0] $end
+$var parameter 32 3! _fu_param12_274 [31:0] $end
+$var parameter 32 4! _fu_param13_274 [31:0] $end
+$var parameter 32 5! _fu_param14_274 [31:0] $end
+$var parameter 32 6! _fu_param15_274 [31:0] $end
+$var parameter 32 7! _fu_param16_274 [31:0] $end
+$var parameter 32 8! _fu_param17_274 [31:0] $end
+$var parameter 32 9! _fu_param18_274 [31:0] $end
+$var parameter 32 :! _fu_param19_274 [31:0] $end
+$var parameter 32 ;! _fu_param20_274 [31:0] $end
+$var parameter 32 <! _fu_param21_274 [31:0] $end
+$var parameter 32 =! _fu_param22_274 [31:0] $end
+$var parameter 32 >! _fu_param23_274 [31:0] $end
+$var parameter 32 ?! _fu_param24_274 [31:0] $end
+$var parameter 32 @! _fu_param25_274 [31:0] $end
+$var parameter 32 A! _fu_param26_274 [31:0] $end
+$var parameter 32 B! _fu_param27_274 [31:0] $end
+$var parameter 32 C! _fu_param28_274 [31:0] $end
+$var parameter 32 D! _fu_param29_274 [31:0] $end
+$var parameter 32 E! _fu_param30_274 [31:0] $end
+$var parameter 32 F! _fu_param31_274 [31:0] $end
+$var parameter 32 G! _fu_param32_274 [31:0] $end
+$var parameter 32 H! _fu_param33_274 [31:0] $end
+$var parameter 32 I! _fu_param34_274 [31:0] $end
+$var parameter 32 J! _fu_param35_274 [31:0] $end
+$var parameter 32 K! _fu_param36_274 [31:0] $end
+$var parameter 32 L! _fu_param37_274 [31:0] $end
+$var parameter 32 M! _fu_param38_274 [31:0] $end
+$var parameter 32 N! _fu_param39_274 [31:0] $end
+$var parameter 32 O! _fu_param40_274 [31:0] $end
+$var parameter 32 P! _fu_param41_274 [31:0] $end
+$var parameter 32 Q! _fu_param42_274 [31:0] $end
+$var parameter 32 R! _fu_param43_274 [31:0] $end
+$var parameter 32 S! _fu_param44_274 [31:0] $end
+$var parameter 32 T! _fu_param45_274 [31:0] $end
+$var parameter 32 U! _fu_param46_274 [31:0] $end
+$var parameter 32 V! _fu_param47_274 [31:0] $end
+$var parameter 32 W! _fu_param48_274 [31:0] $end
+$var parameter 32 X! _fu_param49_274 [31:0] $end
+$var parameter 32 Y! _fu_param50_274 [31:0] $end
+$var parameter 32 Z! _fu_param51_274 [31:0] $end
+$var parameter 32 [! _fu_param52_274 [31:0] $end
+$var parameter 32 \! _fu_param53_274 [31:0] $end
+$var parameter 32 ]! _fu_param54_274 [31:0] $end
+$var parameter 32 ^! _fu_param55_274 [31:0] $end
+$var parameter 32 _! _fu_param56_274 [31:0] $end
+$var parameter 32 `! _fu_param57_274 [31:0] $end
+$var parameter 32 a! _fu_param58_274 [31:0] $end
+$var parameter 32 b! _fu_param59_274 [31:0] $end
+$var parameter 32 c! _fu_param60_274 [31:0] $end
+$var parameter 32 d! _fu_param61_274 [31:0] $end
+$var parameter 32 e! _fu_param62_274 [31:0] $end
+$var parameter 32 f! _fu_param63_274 [31:0] $end
+$var parameter 32 g! _fu_param64_274 [31:0] $end
+$var parameter 32 h! _fu_param65_274 [31:0] $end
+$var parameter 32 i! _fu_param66_274 [31:0] $end
+$var parameter 32 j! _fu_param67_274 [31:0] $end
+$var parameter 32 k! _fu_param68_274 [31:0] $end
+$var parameter 32 l! _fu_param69_274 [31:0] $end
+$var parameter 32 m! _fu_param70_274 [31:0] $end
+$var parameter 32 n! _fu_param71_274 [31:0] $end
+$var parameter 32 o! _fu_param72_274 [31:0] $end
+$var parameter 32 p! _fu_param73_274 [31:0] $end
+$var parameter 32 q! _fu_param74_274 [31:0] $end
+$var parameter 32 r! _fu_param75_274 [31:0] $end
+$var parameter 32 s! _fu_param76_274 [31:0] $end
+$var parameter 32 t! _fu_param77_274 [31:0] $end
+$var parameter 32 u! _fu_param78_274 [31:0] $end
+$var parameter 32 v! _fu_param79_274 [31:0] $end
+$var parameter 32 w! _fu_param80_274 [31:0] $end
+$var parameter 32 x! _fu_param81_274 [31:0] $end
+$var parameter 32 y! _fu_param82_274 [31:0] $end
+$var parameter 32 z! _fu_param83_274 [31:0] $end
+$var parameter 32 {! _fu_param84_274 [31:0] $end
+$var parameter 32 |! _fu_param85_274 [31:0] $end
+$var parameter 32 }! _fu_param86_274 [31:0] $end
+$var parameter 32 ~! _fu_param87_274 [31:0] $end
+$var parameter 32 !" _fu_param88_274 [31:0] $end
+$var parameter 32 "" _fu_param89_274 [31:0] $end
+$var parameter 32 #" _fu_param90_274 [31:0] $end
+$var parameter 32 $" _fu_param91_274 [31:0] $end
+$var parameter 32 %" _fu_param92_274 [31:0] $end
+$var parameter 32 &" _fu_param93_274 [31:0] $end
+$var parameter 32 '" _fu_param94_274 [31:0] $end
+$var parameter 32 (" _fu_param95_274 [31:0] $end
+$var parameter 32 )" _fu_param96_274 [31:0] $end
+$var parameter 32 *" _fu_param97_274 [31:0] $end
+$var parameter 32 +" _fu_param98_274 [31:0] $end
+$var parameter 32 ," _fu_param99_274 [31:0] $end
+$var parameter 32 -" _fu_param100_274 [31:0] $end
+$var parameter 32 ." _fu_param101_274 [31:0] $end
+$var parameter 32 /" _fu_param102_274 [31:0] $end
+$var parameter 32 0" _fu_param103_274 [31:0] $end
+$var parameter 32 1" _fu_param104_274 [31:0] $end
+$var parameter 32 2" _fu_param105_274 [31:0] $end
+$var parameter 32 3" _fu_param106_274 [31:0] $end
+$var parameter 32 4" _fu_param107_274 [31:0] $end
+$var parameter 32 5" _fu_param108_274 [31:0] $end
+$var parameter 32 6" _fu_param109_274 [31:0] $end
+$var parameter 32 7" _fu_param110_274 [31:0] $end
+$var parameter 32 8" _fu_param111_274 [31:0] $end
+$var parameter 32 9" _fu_param112_274 [31:0] $end
+$var parameter 32 :" _fu_param113_274 [31:0] $end
+$var parameter 32 ;" _fu_param114_274 [31:0] $end
+$var parameter 32 <" _fu_param115_274 [31:0] $end
+$var parameter 32 =" _fu_param116_274 [31:0] $end
+$var parameter 32 >" _fu_param117_274 [31:0] $end
+$var parameter 32 ?" _fu_param118_274 [31:0] $end
+$var parameter 32 @" _fu_param119_274 [31:0] $end
+$var parameter 32 A" _fu_param120_274 [31:0] $end
+$var parameter 32 B" _fu_param121_274 [31:0] $end
+$var parameter 32 C" _fu_param122_274 [31:0] $end
+$var parameter 32 D" _fu_param123_274 [31:0] $end
+$var parameter 32 E" _fu_param124_274 [31:0] $end
+$var parameter 32 F" _fu_param125_274 [31:0] $end
+$var parameter 32 G" _fu_param126_274 [31:0] $end
+$var parameter 32 H" _fu_param127_274 [31:0] $end
+$var parameter 32 I" T_SDA_SETUP [31:0] $end
+$var parameter 32 J" T_SDA_HOLD [31:0] $end
+$var parameter 32 K" SCL_LOW_MIN [31:0] $end
+$var parameter 32 L" SCL_HIGH_MIN [31:0] $end
+$var parameter 32 M" START_STOP_DY [31:0] $end
+$scope task LIST_DEV $end
+$var integer 32 N" i $end
+$upscope $end
+$upscope $end
+$scope task I2C_DO $end
+$var reg 8 O" DATA [7:0] $end
+$var reg 1 P" ACK $end
+$var reg 1 Q" REP_START $end
+$var reg 1 R" DO_STOP $end
+$var reg 1 S" DO_START $end
+$var reg 1 T" READ_WRITE $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+b11110 !!
+b1011000 !"
+1"
+b11110 "!
+b1011001 ""
+x#
+b0 #!
+b1011010 #"
+bx $
+b10 $!
+b1011011 $"
+1%
+b0 %!
+b1011100 %"
+1&
+b10000000000000000000000000000000 &!
+b1011101 &"
+z'
+b0 '!
+b1011110 '"
+1(
+b1 (!
+b1011111 ("
+0)
+b10 )!
+b1100000 )"
+bx *
+b11 *!
+b1100001 *"
+b0 +
+b100 +!
+b1100010 +"
+x,
+b101 ,!
+b1100011 ,"
+0-
+b110 -!
+b1100100 -"
+b0 .
+b111 .!
+b1100101 ."
+b1 /
+b1000 /!
+b1100110 /"
+b10 0
+b1001 0!
+b1100111 0"
+b11 1
+b1010 1!
+b1101000 1"
+b100 2
+b1011 2!
+b1101001 2"
+03
+b1100 3!
+b1101010 3"
+04
+b1101 4!
+b1101011 4"
+05
+b1110 5!
+b1101100 5"
+bx 6
+b1111 6!
+b1101101 6"
+b100 7
+b10000 7!
+b1101110 7"
+bx 8
+b10001 8!
+b1101111 8"
+x9
+b10010 9!
+b1110000 9"
+0:
+b10011 :!
+b1110001 :"
+b0 ;
+b10100 ;!
+b1110010 ;"
+b0 <
+b10101 <!
+b1110011 <"
+1=
+b10110 =!
+b1110100 ="
+1>
+b10111 >!
+b1110101 >"
+1?
+b11000 ?!
+b1110110 ?"
+1@
+b11001 @!
+b1110111 @"
+0A
+b11010 A!
+b1111000 A"
+b0 B
+b11011 B!
+b1111001 B"
+b0 C
+b11100 C!
+b1111010 C"
+b0 D
+b11101 D!
+b1111011 D"
+b0 E
+b11110 E!
+b1111100 E"
+b0 F
+b11111 F!
+b1111101 F"
+b0 G
+b100000 G!
+b1111110 G"
+b0 H
+b100001 H!
+b1111111 H"
+b0 I
+b100010 I!
+b1010 I"
+b0 J
+b100011 J!
+b0 J"
+0K
+b100100 K!
+b101000 K"
+0L
+b100101 L!
+b101000 L"
+1M
+b100110 M!
+b101000 M"
+0N
+b100111 N!
+bx N"
+xO
+b101000 O!
+bx O"
+bz P
+b101001 P!
+xP"
+bz Q
+b101010 Q!
+xQ"
+0R
+b101011 R!
+xR"
+0S
+b101100 S!
+xS"
+0T
+b101101 T!
+xT"
+b1011 U
+b101110 U!
+b0 V
+b101111 V!
+b1 W
+b110000 W!
+b10 X
+b110001 X!
+b11 Y
+b110010 Y!
+b100 Z
+b110011 Z!
+b101 [
+b110100 [!
+b110 \
+b110101 \!
+b111 ]
+b110110 ]!
+b1000 ^
+b110111 ^!
+b1001 _
+b111000 _!
+b1010 `
+b111001 `!
+b1011 a
+b111010 a!
+b1100 b
+b111011 b!
+b1101 c
+b111100 c!
+b1110 d
+b111101 d!
+b0 e
+b111110 e!
+b1 f
+b111111 f!
+b10 g
+b1000000 g!
+b11 h
+b1000001 h!
+b0 i
+b1000010 i!
+bx j
+b1000011 j!
+xk
+b1000100 k!
+bx l
+b1000101 l!
+bx m
+b1000110 m!
+1n
+b1000111 n!
+zo
+b1001000 o!
+zp
+b1001001 p!
+1q
+b1001010 q!
+1r
+b1001011 r!
+0s
+b1001100 s!
+0t
+b1001101 t!
+b0 u
+b1001110 u!
+b0 v
+b1001111 v!
+b0 w
+b1010000 w!
+bx x
+b1010001 x!
+b0 y
+b1010010 y!
+bx z
+b1010011 z!
+b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000 {
+b1010100 {!
+b101000 |
+b1010101 |!
+b101000 }
+b1010110 }!
+b101000 ~
+b1010111 ~!
+$end
+#5000
+1!
+0(
+13
+b0 ;
+1=
+1?
+b0 B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+0M
+1R
+#10000
+0!
+03
+#15000
+1!
+13
+b0 ;
+1=
+1?
+b0 B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+0M
+#20000
+0!
+0"
+03
+14
+#25000
+1!
+1(
+13
+b0 ;
+b0 <
+1=
+1?
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1M
+0R
+1S
+0T
+#30000
+0!
+03
+#35000
+1!
+1(
+13
+b0 ;
+b0 <
+1=
+1?
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1M
+0S
+0T
+#40000
+0!
+03
+#45000
+1!
+13
+b0 ;
+1=
+1?
+b0 B
+b0 D
+b11 F
+b0 G
+b0 I
+0K
+#50000
+0!
+03
+b1000011 O"
+1P"
+0Q"
+0R"
+1S"
+0T"
+b1010101 m
+#55000
+1!
+13
+b0 ;
+1=
+1?
+b0 B
+b0 D
+b11 F
+b0 G
+b0 I
+0K
+#60000
+0!
+b0 $
+1(
+1)
+b1000011 *
+03
+15
+b0 6
+b1000011 8
+b1 <
+b1000011x C
+b0 E
+b0 H
+b0 J
+1M
+#65000
+1!
+0(
+13
+b1 ;
+b1 <
+1=
+0>
+1?
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+0M
+1R
+0T
+#70000
+0!
+b10 $
+03
+b10 6
+b1 <
+0>
+b1000011x C
+b0 E
+b0 H
+b0 J
+#75000
+1!
+0&
+13
+b1 ;
+b1 <
+0=
+0>
+1?
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b10 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+b1 i
+0q
+b1001011 u
+#80000
+0!
+0)
+bx *
+03
+05
+bx 8
+b1 <
+0>
+b1000011x C
+b0 E
+b0 H
+b0 J
+#85000
+1!
+13
+b1 ;
+0=
+1?
+b1000011x B
+b0 D
+b1 F
+b0 G
+b0 I
+0K
+#90000
+0!
+03
+#95000
+1!
+13
+b1 ;
+0=
+1?
+b1000011x B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+#100000
+0!
+03
+#105000
+1!
+13
+b1 ;
+b10 <
+0=
+0>
+1?
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1S
+0T
+#110000
+0!
+03
+#115000
+1!
+13
+b10 ;
+b10 <
+0=
+0>
+1?
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+0S
+0T
+#120000
+0!
+03
+#125000
+1!
+13
+b10 ;
+0=
+1?
+b1000011x B
+b0 D
+b10 F
+b0 G
+b0 I
+0K
+#130000
+0!
+03
+#135000
+1!
+13
+b10 ;
+0=
+1?
+b1000011x B
+b0 D
+b1 F
+b0 G
+b0 I
+0K
+#140000
+0!
+03
+#145000
+1!
+13
+b10 ;
+0=
+1?
+b1000011x B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+#150000
+0!
+03
+#155000
+1!
+13
+b10 ;
+b11 <
+0=
+0>
+1?
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1S
+0T
+#160000
+0!
+03
+#165000
+1!
+13
+b11 ;
+b11 <
+0=
+0>
+1?
+0@
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+0S
+0T
+#170000
+0!
+03
+#175000
+1!
+0%
+13
+b11 ;
+0=
+0?
+b1000011x B
+b0 D
+b10 F
+b0 G
+b0 I
+0K
+b10 i
+0r
+b10101111 v
+b10101111 w
+b1100100 y
+#180000
+0!
+03
+#185000
+1!
+13
+b11 ;
+0=
+0?
+b1000011x B
+b0 D
+b1 F
+b0 G
+b0 I
+0K
+#190000
+0!
+03
+#195000
+1!
+13
+b11 ;
+0=
+0?
+b1000011x B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+#200000
+0!
+03
+#205000
+1!
+13
+b11 ;
+b100 <
+0=
+0>
+0?
+0@
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1S
+0T
+#210000
+0!
+03
+#215000
+1!
+13
+b100 ;
+b100 <
+0=
+0>
+0?
+0@
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+0S
+0T
+#220000
+0!
+03
+#225000
+1!
+13
+b100 ;
+0=
+0?
+b1000011x B
+b0 D
+b10 F
+b0 G
+b0 I
+0K
+#230000
+0!
+03
+#235000
+1!
+13
+b100 ;
+0=
+0?
+b1000011x B
+b0 D
+b1 F
+b0 G
+b0 I
+0K
+#240000
+0!
+03
+#245000
+1!
+13
+b100 ;
+0=
+0?
+b1000011x B
+b0 D
+b0 F
+b0 G
+b0 I
+0K
+#250000
+0!
+03
+#255000
+1!
+13
+b100 ;
+b101 <
+0=
+0>
+0?
+0@
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1S
+0T
+#260000
+0!
+03
+#265000
+1!
+1(
+13
+b101 ;
+b101 <
+0=
+0>
+0?
+0@
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b0 G
+b0 H
+b0 I
+b0 J
+0K
+1M
+0R
+0S
+0T
+#270000
+0!
+03
+b11111111 O"
+0P"
+0Q"
+0R"
+0S"
+1T"
+#275000
+1!
+13
+b101 ;
+0=
+0?
+b1000011x B
+b0 D
+b11 F
+b0 G
+b0 I
+0K
+#280000
+0!
+1(
+1)
+b11111111 *
+03
+15
+b11111111 8
+b1010 <
+0>
+0@
+b1000011x C
+b0 E
+b10 H
+b0 J
+1M
+#285000
+1!
+0(
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0M
+0N
+1R
+0T
+#290000
+0!
+b11 $
+03
+b11 6
+b1010 <
+0>
+0@
+1A
+b1000011x C
+b0 E
+b10 H
+b0 J
+0N
+#295000
+1!
+13
+b1010 ;
+0=
+0?
+b1000011x B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+#300000
+0!
+03
+#305000
+1!
+13
+b1010 ;
+0=
+0?
+b1000011x B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#310000
+0!
+03
+#315000
+1!
+13
+b1010 ;
+0=
+0?
+b1000011x B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#320000
+0!
+03
+#325000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#330000
+0!
+03
+#335000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#340000
+0!
+03
+#345000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b1000011x B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+b0xxxxxx j
+1r
+b101011001 v
+b10101010 w
+b100001110 y
+#350000
+0!
+03
+#355000
+1!
+13
+b1011 ;
+0=
+1?
+b1000011x B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#360000
+0!
+03
+#365000
+1!
+13
+b1011 ;
+0=
+1?
+b1000011x B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#370000
+0!
+03
+#375000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#380000
+0!
+03
+#385000
+1!
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#390000
+0!
+03
+#395000
+1!
+13
+b1100 ;
+0=
+1?
+b1000011x B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+#400000
+0!
+03
+#405000
+1!
+13
+b1100 ;
+0=
+1?
+b1000011x B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#410000
+0!
+03
+#415000
+1!
+13
+b1100 ;
+0=
+1?
+b1000011x B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#420000
+0!
+03
+#425000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+1T
+#430000
+0!
+03
+#435000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b1000011x B
+b1000011x C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#440000
+0!
+03
+#445000
+1!
+0%
+13
+b1101 ;
+0=
+0?
+b1000011x B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+b11 i
+0r
+b110111101 v
+b1100100 w
+b101110010 y
+#450000
+0!
+03
+#455000
+1!
+13
+b1101 ;
+0=
+0?
+b1000011x B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#460000
+0!
+03
+#465000
+1!
+13
+b1101 ;
+0=
+0?
+b1000011x B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#470000
+0!
+03
+#475000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b1000011x B
+b1000011x0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b1 J
+0K
+0N
+1S
+0T
+#480000
+0!
+03
+#485000
+1!
+13
+b1010 ;
+b1010 <
+0=
+1>
+0?
+0@
+1A
+b1000011x0 B
+b1000011x0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#490000
+0!
+03
+#495000
+1!
+1&
+13
+b1010 ;
+b1010 <
+1=
+0?
+0@
+1A
+b1000011x0 B
+b1000011x0 C
+b0 D
+b0 E
+b10 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1q
+b111101111 u
+#500000
+0!
+03
+#505000
+1!
+13
+b1010 ;
+1=
+0?
+b1000011x0 B
+b0 D
+b1 F
+b10 G
+b1 I
+0K
+#510000
+0!
+03
+#515000
+1!
+13
+b1010 ;
+1=
+0?
+b1000011x0 B
+b0 D
+b0 F
+b10 G
+b1 I
+0K
+#520000
+0!
+03
+#525000
+1!
+13
+b1010 ;
+b1011 <
+1=
+0?
+0@
+1A
+b1000011x0 B
+b1000011x0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+0T
+#530000
+0!
+03
+#535000
+1!
+13
+b1011 ;
+b1011 <
+1=
+0?
+1@
+1A
+b1000011x0 B
+b1000011x0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#540000
+0!
+03
+#545000
+1!
+1%
+13
+b1011 ;
+1=
+1?
+b1000011x0 B
+b0 D
+b10 F
+b10 G
+b1 I
+0K
+b1xxxxx j
+1r
+b1000100001 v
+b1100100 w
+b110010 y
+#550000
+0!
+03
+#555000
+1!
+13
+b1011 ;
+1=
+1?
+b1000011x0 B
+b0 D
+b1 F
+b10 G
+b1 I
+0K
+#560000
+0!
+03
+#565000
+1!
+13
+b1011 ;
+1=
+1?
+b1000011x0 B
+b0 D
+b0 F
+b10 G
+b1 I
+0K
+#570000
+0!
+03
+#575000
+1!
+13
+b1011 ;
+b1100 <
+1=
+1?
+1A
+b1000011x0 B
+b1000011x0 C
+b0 D
+b1 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+0T
+#580000
+0!
+03
+#585000
+1!
+1-
+13
+b1100 ;
+b1100 <
+1=
+1?
+1A
+b1000011x0 B
+b1000011x0 C
+b1 D
+b1 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#590000
+0!
+03
+#595000
+1!
+13
+b1100 ;
+1=
+1?
+b1000011x0 B
+b1 D
+b10 F
+b10 G
+b1 I
+0K
+#600000
+0!
+03
+#605000
+1!
+13
+b1100 ;
+1=
+1?
+b1000011x0 B
+b1 D
+b1 F
+b10 G
+b1 I
+0K
+#610000
+0!
+03
+#615000
+1!
+13
+b1100 ;
+1=
+1?
+b1000011x0 B
+b1 D
+b0 F
+b10 G
+b1 I
+0K
+#620000
+0!
+03
+#625000
+1!
+13
+b1100 ;
+b1101 <
+1=
+1?
+1A
+b1000011x0 B
+b1000011x0 C
+b1 D
+b1 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+1T
+#630000
+0!
+03
+#635000
+1!
+13
+b1101 ;
+b1101 <
+1=
+1?
+0@
+1A
+b1000011x0 B
+b1000011x0 C
+b1 D
+b1 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#640000
+0!
+03
+#645000
+1!
+0%
+13
+b1101 ;
+1=
+0?
+b1000011x0 B
+b1 D
+b10 F
+b10 G
+b1 I
+0K
+b100 i
+0r
+b1010000101 v
+b1100100 w
+b10010110 y
+#650000
+0!
+03
+#655000
+1!
+13
+b1101 ;
+1=
+0?
+b1000011x0 B
+b1 D
+b1 F
+b10 G
+b1 I
+0K
+#660000
+0!
+03
+#665000
+1!
+13
+b1101 ;
+1=
+0?
+b1000011x0 B
+b1 D
+b0 F
+b10 G
+b1 I
+0K
+#670000
+0!
+03
+#675000
+1!
+13
+b1101 ;
+b1010 <
+1=
+0?
+0@
+1A
+b1000011x0 B
+b11x00 C
+b1 D
+b1 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b10 J
+0K
+0N
+1S
+0T
+#680000
+0!
+03
+#685000
+1!
+13
+b1010 ;
+b1010 <
+1=
+0>
+0?
+0@
+1A
+b11x00 B
+b11x00 C
+b1 D
+b1 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#690000
+0!
+03
+#695000
+1!
+0&
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x00 B
+b11x00 C
+b1 D
+b1 E
+b10 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0q
+b1010110111 u
+#700000
+0!
+03
+#705000
+1!
+13
+b1010 ;
+0=
+0?
+b11x00 B
+b1 D
+b1 F
+b10 G
+b10 I
+0K
+#710000
+0!
+03
+#715000
+1!
+13
+b1010 ;
+0=
+0?
+b11x00 B
+b1 D
+b0 F
+b10 G
+b10 I
+0K
+#720000
+0!
+03
+#725000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b11x00 B
+b11x00 C
+b1 D
+b1 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+0T
+#730000
+0!
+03
+#735000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b11x00 B
+b11x00 C
+b1 D
+b1 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#740000
+0!
+03
+#745000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b11x00 B
+b1 D
+b10 F
+b10 G
+b10 I
+0K
+b10xxxx j
+1r
+b1011101001 v
+b1100100 w
+b110010 y
+#750000
+0!
+03
+#755000
+1!
+13
+b1011 ;
+0=
+1?
+b11x00 B
+b1 D
+b1 F
+b10 G
+b10 I
+0K
+#760000
+0!
+03
+#765000
+1!
+13
+b1011 ;
+0=
+1?
+b11x00 B
+b1 D
+b0 F
+b10 G
+b10 I
+0K
+#770000
+0!
+03
+#775000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x00 B
+b11x00 C
+b1 D
+b10 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+0T
+#780000
+0!
+03
+#785000
+1!
+b1 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x00 B
+b11x00 C
+b10 D
+b10 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#790000
+0!
+03
+#795000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00 B
+b10 D
+b10 F
+b10 G
+b10 I
+0K
+#800000
+0!
+03
+#805000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00 B
+b10 D
+b1 F
+b10 G
+b10 I
+0K
+#810000
+0!
+03
+#815000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00 B
+b10 D
+b0 F
+b10 G
+b10 I
+0K
+#820000
+0!
+03
+#825000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b11x00 B
+b11x00 C
+b10 D
+b10 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+1T
+#830000
+0!
+03
+#835000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b11x00 B
+b11x00 C
+b10 D
+b10 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#840000
+0!
+03
+#845000
+1!
+0%
+13
+b1101 ;
+0=
+0?
+b11x00 B
+b10 D
+b10 F
+b10 G
+b10 I
+0K
+b101 i
+0r
+b1101001101 v
+b1100100 w
+b10010110 y
+#850000
+0!
+03
+#855000
+1!
+13
+b1101 ;
+0=
+0?
+b11x00 B
+b10 D
+b1 F
+b10 G
+b10 I
+0K
+#860000
+0!
+03
+#865000
+1!
+13
+b1101 ;
+0=
+0?
+b11x00 B
+b10 D
+b0 F
+b10 G
+b10 I
+0K
+#870000
+0!
+03
+#875000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x00 B
+b11x000 C
+b10 D
+b10 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b11 J
+0K
+0N
+1S
+0T
+#880000
+0!
+03
+#885000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x000 B
+b11x000 C
+b10 D
+b10 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#890000
+0!
+03
+#895000
+1!
+13
+b1010 ;
+0=
+0?
+b11x000 B
+b10 D
+b10 F
+b10 G
+b11 I
+0K
+#900000
+0!
+03
+#905000
+1!
+13
+b1010 ;
+0=
+0?
+b11x000 B
+b10 D
+b1 F
+b10 G
+b11 I
+0K
+#910000
+0!
+03
+#915000
+1!
+13
+b1010 ;
+0=
+0?
+b11x000 B
+b10 D
+b0 F
+b10 G
+b11 I
+0K
+#920000
+0!
+03
+#925000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b11x000 B
+b11x000 C
+b10 D
+b10 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+0T
+#930000
+0!
+03
+#935000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b11x000 B
+b11x000 C
+b10 D
+b10 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#940000
+0!
+03
+#945000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b11x000 B
+b10 D
+b10 F
+b10 G
+b11 I
+0K
+b100xxx j
+1r
+b1110110001 v
+b1100100 w
+b11111010 y
+#950000
+0!
+03
+#955000
+1!
+13
+b1011 ;
+0=
+1?
+b11x000 B
+b10 D
+b1 F
+b10 G
+b11 I
+0K
+#960000
+0!
+03
+#965000
+1!
+13
+b1011 ;
+0=
+1?
+b11x000 B
+b10 D
+b0 F
+b10 G
+b11 I
+0K
+#970000
+0!
+03
+#975000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x000 B
+b11x000 C
+b10 D
+b100 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+0T
+#980000
+0!
+03
+#985000
+1!
+b10 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x000 B
+b11x000 C
+b100 D
+b100 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#990000
+0!
+03
+#995000
+1!
+13
+b1100 ;
+0=
+1?
+b11x000 B
+b100 D
+b10 F
+b10 G
+b11 I
+0K
+#1000000
+0!
+03
+#1005000
+1!
+13
+b1100 ;
+0=
+1?
+b11x000 B
+b100 D
+b1 F
+b10 G
+b11 I
+0K
+#1010000
+0!
+03
+#1015000
+1!
+13
+b1100 ;
+0=
+1?
+b11x000 B
+b100 D
+b0 F
+b10 G
+b11 I
+0K
+#1020000
+0!
+03
+#1025000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b11x000 B
+b11x000 C
+b100 D
+b100 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+1T
+#1030000
+0!
+03
+#1035000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b11x000 B
+b11x000 C
+b100 D
+b100 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#1040000
+0!
+03
+#1045000
+1!
+0%
+13
+b1101 ;
+0=
+0?
+b11x000 B
+b100 D
+b10 F
+b10 G
+b11 I
+0K
+b110 i
+0r
+b10000010101 v
+b1100100 w
+b101011110 y
+#1050000
+0!
+03
+#1055000
+1!
+13
+b1101 ;
+0=
+0?
+b11x000 B
+b100 D
+b1 F
+b10 G
+b11 I
+0K
+#1060000
+0!
+03
+#1065000
+1!
+13
+b1101 ;
+0=
+0?
+b11x000 B
+b100 D
+b0 F
+b10 G
+b11 I
+0K
+#1070000
+0!
+03
+#1075000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x000 B
+b11x0000 C
+b100 D
+b100 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b100 J
+0K
+0N
+1S
+0T
+#1080000
+0!
+03
+#1085000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x0000 B
+b11x0000 C
+b100 D
+b100 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#1090000
+0!
+03
+#1095000
+1!
+13
+b1010 ;
+0=
+0?
+b11x0000 B
+b100 D
+b10 F
+b10 G
+b100 I
+0K
+#1100000
+0!
+03
+#1105000
+1!
+13
+b1010 ;
+0=
+0?
+b11x0000 B
+b100 D
+b1 F
+b10 G
+b100 I
+0K
+#1110000
+0!
+03
+#1115000
+1!
+13
+b1010 ;
+0=
+0?
+b11x0000 B
+b100 D
+b0 F
+b10 G
+b100 I
+0K
+#1120000
+0!
+03
+#1125000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b11x0000 B
+b11x0000 C
+b100 D
+b100 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+0T
+#1130000
+0!
+03
+#1135000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b11x0000 B
+b11x0000 C
+b100 D
+b100 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#1140000
+0!
+03
+#1145000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b11x0000 B
+b100 D
+b10 F
+b10 G
+b100 I
+0K
+b1000xx j
+1r
+b10001111001 v
+b1100100 w
+b111000010 y
+#1150000
+0!
+03
+#1155000
+1!
+13
+b1011 ;
+0=
+1?
+b11x0000 B
+b100 D
+b1 F
+b10 G
+b100 I
+0K
+#1160000
+0!
+03
+#1165000
+1!
+13
+b1011 ;
+0=
+1?
+b11x0000 B
+b100 D
+b0 F
+b10 G
+b100 I
+0K
+#1170000
+0!
+03
+#1175000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x0000 B
+b11x0000 C
+b100 D
+b1000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+0T
+#1180000
+0!
+03
+#1185000
+1!
+b100 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x0000 B
+b11x0000 C
+b1000 D
+b1000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#1190000
+0!
+03
+#1195000
+1!
+13
+b1100 ;
+0=
+1?
+b11x0000 B
+b1000 D
+b10 F
+b10 G
+b100 I
+0K
+#1200000
+0!
+03
+#1205000
+1!
+13
+b1100 ;
+0=
+1?
+b11x0000 B
+b1000 D
+b1 F
+b10 G
+b100 I
+0K
+#1210000
+0!
+03
+#1215000
+1!
+13
+b1100 ;
+0=
+1?
+b11x0000 B
+b1000 D
+b0 F
+b10 G
+b100 I
+0K
+#1220000
+0!
+03
+#1225000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b11x0000 B
+b11x0000 C
+b1000 D
+b1000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+1T
+#1230000
+0!
+03
+#1235000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b11x0000 B
+b11x0000 C
+b1000 D
+b1000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#1240000
+0!
+03
+#1245000
+1!
+0%
+13
+b1101 ;
+0=
+0?
+b11x0000 B
+b1000 D
+b10 F
+b10 G
+b100 I
+0K
+b111 i
+0r
+b10011011101 v
+b1100100 w
+b1000100110 y
+#1250000
+0!
+03
+#1255000
+1!
+13
+b1101 ;
+0=
+0?
+b11x0000 B
+b1000 D
+b1 F
+b10 G
+b100 I
+0K
+#1260000
+0!
+03
+#1265000
+1!
+13
+b1101 ;
+0=
+0?
+b11x0000 B
+b1000 D
+b0 F
+b10 G
+b100 I
+0K
+#1270000
+0!
+03
+#1275000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x0000 B
+b11x00000 C
+b1000 D
+b1000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b101 J
+0K
+0N
+1S
+0T
+#1280000
+0!
+03
+#1285000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x00000 B
+b11x00000 C
+b1000 D
+b1000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#1290000
+0!
+03
+#1295000
+1!
+13
+b1010 ;
+0=
+0?
+b11x00000 B
+b1000 D
+b10 F
+b10 G
+b101 I
+0K
+#1300000
+0!
+03
+#1305000
+1!
+13
+b1010 ;
+0=
+0?
+b11x00000 B
+b1000 D
+b1 F
+b10 G
+b101 I
+0K
+#1310000
+0!
+03
+#1315000
+1!
+13
+b1010 ;
+0=
+0?
+b11x00000 B
+b1000 D
+b0 F
+b10 G
+b101 I
+0K
+#1320000
+0!
+03
+#1325000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b11x00000 B
+b11x00000 C
+b1000 D
+b1000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+0T
+#1330000
+0!
+03
+#1335000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b11x00000 B
+b11x00000 C
+b1000 D
+b1000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#1340000
+0!
+03
+#1345000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b11x00000 B
+b1000 D
+b10 F
+b10 G
+b101 I
+0K
+b10000x j
+1r
+b10101000001 v
+b1100100 w
+b1010001010 y
+#1350000
+0!
+03
+#1355000
+1!
+13
+b1011 ;
+0=
+1?
+b11x00000 B
+b1000 D
+b1 F
+b10 G
+b101 I
+0K
+#1360000
+0!
+03
+#1365000
+1!
+13
+b1011 ;
+0=
+1?
+b11x00000 B
+b1000 D
+b0 F
+b10 G
+b101 I
+0K
+#1370000
+0!
+03
+#1375000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x00000 B
+b11x00000 C
+b1000 D
+b10000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+0T
+#1380000
+0!
+03
+#1385000
+1!
+b1000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b11x00000 B
+b11x00000 C
+b10000 D
+b10000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#1390000
+0!
+03
+#1395000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00000 B
+b10000 D
+b10 F
+b10 G
+b101 I
+0K
+#1400000
+0!
+03
+#1405000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00000 B
+b10000 D
+b1 F
+b10 G
+b101 I
+0K
+#1410000
+0!
+03
+#1415000
+1!
+13
+b1100 ;
+0=
+1?
+b11x00000 B
+b10000 D
+b0 F
+b10 G
+b101 I
+0K
+#1420000
+0!
+03
+#1425000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b11x00000 B
+b11x00000 C
+b10000 D
+b10000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+1T
+#1430000
+0!
+03
+#1435000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b11x00000 B
+b11x00000 C
+b10000 D
+b10000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#1440000
+0!
+03
+#1445000
+1!
+0%
+13
+b1101 ;
+0=
+0?
+b11x00000 B
+b10000 D
+b10 F
+b10 G
+b101 I
+0K
+b1000 i
+0r
+b10110100101 v
+b1100100 w
+b1011101110 y
+#1450000
+0!
+03
+#1455000
+1!
+13
+b1101 ;
+0=
+0?
+b11x00000 B
+b10000 D
+b1 F
+b10 G
+b101 I
+0K
+#1460000
+0!
+03
+#1465000
+1!
+13
+b1101 ;
+0=
+0?
+b11x00000 B
+b10000 D
+b0 F
+b10 G
+b101 I
+0K
+#1470000
+0!
+03
+#1475000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b11x00000 B
+b11x000000 C
+b10000 D
+b10000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b110 J
+0K
+0N
+1S
+0T
+#1480000
+0!
+03
+#1485000
+1!
+13
+b1010 ;
+b1010 <
+0=
+1>
+0?
+0@
+1A
+b11x000000 B
+b11x000000 C
+b10000 D
+b10000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#1490000
+0!
+03
+#1495000
+1!
+1&
+13
+b1010 ;
+b1010 <
+1=
+0?
+0@
+1A
+b11x000000 B
+b11x000000 C
+b10000 D
+b10000 E
+b10 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1q
+b10111010111 u
+#1500000
+0!
+03
+#1505000
+1!
+13
+b1010 ;
+1=
+0?
+b11x000000 B
+b10000 D
+b1 F
+b10 G
+b110 I
+0K
+#1510000
+0!
+03
+#1515000
+1!
+13
+b1010 ;
+1=
+0?
+b11x000000 B
+b10000 D
+b0 F
+b10 G
+b110 I
+0K
+#1520000
+0!
+03
+#1525000
+1!
+13
+b1010 ;
+b1011 <
+1=
+0?
+0@
+1A
+b11x000000 B
+b11x000000 C
+b10000 D
+b10000 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+0T
+#1530000
+0!
+03
+#1535000
+1!
+13
+b1011 ;
+b1011 <
+1=
+0?
+1@
+1A
+b11x000000 B
+b11x000000 C
+b10000 D
+b10000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#1540000
+0!
+03
+#1545000
+1!
+1%
+13
+b1011 ;
+1=
+1?
+b11x000000 B
+b10000 D
+b10 F
+b10 G
+b110 I
+0K
+b100001 j
+1r
+b11000001001 v
+b1100100 w
+b110010 y
+#1550000
+0!
+03
+#1555000
+1!
+13
+b1011 ;
+1=
+1?
+b11x000000 B
+b10000 D
+b1 F
+b10 G
+b110 I
+0K
+#1560000
+0!
+03
+#1565000
+1!
+13
+b1011 ;
+1=
+1?
+b11x000000 B
+b10000 D
+b0 F
+b10 G
+b110 I
+0K
+#1570000
+0!
+03
+#1575000
+1!
+13
+b1011 ;
+b1100 <
+1=
+1?
+1A
+b11x000000 B
+b11x000000 C
+b10000 D
+b100001 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+0T
+#1580000
+0!
+03
+#1585000
+1!
+b10000 +
+1-
+13
+b1100 ;
+b1100 <
+1=
+1?
+1A
+b11x000000 B
+b11x000000 C
+b100001 D
+b100001 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#1590000
+0!
+03
+#1595000
+1!
+13
+b1100 ;
+1=
+1?
+b11x000000 B
+b100001 D
+b10 F
+b10 G
+b110 I
+0K
+#1600000
+0!
+03
+#1605000
+1!
+13
+b1100 ;
+1=
+1?
+b11x000000 B
+b100001 D
+b1 F
+b10 G
+b110 I
+0K
+#1610000
+0!
+03
+#1615000
+1!
+13
+b1100 ;
+1=
+1?
+b11x000000 B
+b100001 D
+b0 F
+b10 G
+b110 I
+0K
+#1620000
+0!
+03
+#1625000
+1!
+13
+b1100 ;
+b1101 <
+1=
+1?
+1A
+b11x000000 B
+b11x000000 C
+b100001 D
+b100001 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+1T
+#1630000
+0!
+03
+#1635000
+1!
+13
+b1101 ;
+b1101 <
+1=
+1?
+0@
+1A
+b11x000000 B
+b11x000000 C
+b100001 D
+b100001 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#1640000
+0!
+03
+#1645000
+1!
+0%
+13
+b1101 ;
+1=
+0?
+b11x000000 B
+b100001 D
+b10 F
+b10 G
+b110 I
+0K
+b1001 i
+0r
+b11001101101 v
+b1100100 w
+b10010110 y
+#1650000
+0!
+03
+#1655000
+1!
+13
+b1101 ;
+1=
+0?
+b11x000000 B
+b100001 D
+b1 F
+b10 G
+b110 I
+0K
+#1660000
+0!
+03
+#1665000
+1!
+13
+b1101 ;
+1=
+0?
+b11x000000 B
+b100001 D
+b0 F
+b10 G
+b110 I
+0K
+#1670000
+0!
+03
+#1675000
+1!
+13
+b1101 ;
+b1010 <
+1=
+0?
+0@
+1A
+b11x000000 B
+b1x0000000 C
+b100001 D
+b100001 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b111 J
+0K
+0N
+1S
+0T
+#1680000
+0!
+03
+#1685000
+1!
+13
+b1010 ;
+b1010 <
+1=
+0?
+0@
+1A
+b1x0000000 B
+b1x0000000 C
+b100001 D
+b100001 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#1690000
+0!
+03
+#1695000
+1!
+13
+b1010 ;
+1=
+0?
+b1x0000000 B
+b100001 D
+b10 F
+b10 G
+b111 I
+0K
+#1700000
+0!
+03
+#1705000
+1!
+13
+b1010 ;
+1=
+0?
+b1x0000000 B
+b100001 D
+b1 F
+b10 G
+b111 I
+0K
+#1710000
+0!
+03
+#1715000
+1!
+13
+b1010 ;
+1=
+0?
+b1x0000000 B
+b100001 D
+b0 F
+b10 G
+b111 I
+0K
+#1720000
+0!
+03
+#1725000
+1!
+13
+b1010 ;
+b1011 <
+1=
+0?
+0@
+1A
+b1x0000000 B
+b1x0000000 C
+b100001 D
+b100001 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+0T
+#1730000
+0!
+03
+#1735000
+1!
+13
+b1011 ;
+b1011 <
+1=
+0?
+1@
+1A
+b1x0000000 B
+b1x0000000 C
+b100001 D
+b100001 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#1740000
+0!
+03
+#1745000
+1!
+1%
+13
+b1011 ;
+1=
+1?
+b1x0000000 B
+b100001 D
+b10 F
+b10 G
+b111 I
+0K
+1k
+1r
+b11011010001 v
+b1100100 w
+b11111010 y
+#1750000
+0!
+03
+#1755000
+1!
+13
+b1011 ;
+1=
+1?
+b1x0000000 B
+b100001 D
+b1 F
+b10 G
+b111 I
+0K
+#1760000
+0!
+03
+#1765000
+1!
+13
+b1011 ;
+1=
+1?
+b1x0000000 B
+b100001 D
+b0 F
+b10 G
+b111 I
+0K
+#1770000
+0!
+03
+#1775000
+1!
+13
+b1011 ;
+b1100 <
+1=
+1?
+1A
+b1x0000000 B
+b1x0000000 C
+b100001 D
+b1000011 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+0T
+#1780000
+0!
+03
+#1785000
+1!
+b100001 +
+13
+b1100 ;
+b1100 <
+1=
+1?
+1A
+b1x0000000 B
+b1x0000000 C
+b1000011 D
+b1000011 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#1790000
+0!
+03
+#1795000
+1!
+13
+b1100 ;
+1=
+1?
+b1x0000000 B
+b1000011 D
+b10 F
+b10 G
+b111 I
+0K
+#1800000
+0!
+03
+#1805000
+1!
+13
+b1100 ;
+1=
+1?
+b1x0000000 B
+b1000011 D
+b1 F
+b10 G
+b111 I
+0K
+#1810000
+0!
+03
+#1815000
+1!
+13
+b1100 ;
+1=
+1?
+b1x0000000 B
+b1000011 D
+b0 F
+b10 G
+b111 I
+0K
+#1820000
+0!
+03
+#1825000
+1!
+13
+b1100 ;
+b1101 <
+1=
+1?
+1A
+b1x0000000 B
+b1x0000000 C
+b1000011 D
+b1000011 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+1T
+#1830000
+0!
+03
+#1835000
+1!
+13
+b1101 ;
+b1101 <
+1=
+1?
+0@
+1A
+b1x0000000 B
+b1x0000000 C
+b1000011 D
+b1000011 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#1840000
+0!
+03
+#1845000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+1=
+0?
+0@
+1A
+b1x0000000 B
+b1x0000000 C
+b1000011 D
+b1000011 E
+b10 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+b1010 i
+0n
+0p
+0q
+0r
+b11100110101 u
+b11100110101 v
+b1100100 w
+b101011110 y
+#1850000
+0!
+03
+#1855000
+1!
+13
+b1101 ;
+1=
+0?
+b1x0000000 B
+b1000011 D
+b1 F
+b10 G
+b111 I
+0K
+#1860000
+0!
+03
+#1865000
+1!
+13
+b1101 ;
+1=
+0?
+b1x0000000 B
+b1000011 D
+b0 F
+b10 G
+b111 I
+0K
+#1870000
+0!
+03
+#1875000
+1!
+13
+b1101 ;
+b1010 <
+1=
+0?
+0@
+1A
+b1x0000000 B
+bx00000000 C
+b1000011 D
+b1000011 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b1000 J
+0K
+0N
+1S
+0T
+#1880000
+0!
+03
+#1885000
+1!
+0&
+13
+b1010 ;
+b1010 <
+1=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b1000011 D
+b1000011 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#1890000
+0!
+03
+#1895000
+1!
+0&
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b1000011 D
+b10 F
+b10 G
+b1000 I
+0K
+#1900000
+0!
+03
+#1905000
+1!
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b1000011 D
+b1 F
+b10 G
+b1000 I
+0K
+#1910000
+0!
+03
+#1915000
+1!
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b1000011 D
+b0 F
+b10 G
+b1000 I
+0K
+#1920000
+0!
+03
+#1925000
+1!
+13
+b1010 ;
+b1011 <
+x=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b1000011 D
+b1000011 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+0T
+#1930000
+0!
+03
+#1935000
+1!
+13
+b1011 ;
+b1011 <
+x=
+x>
+0?
+1@
+1A
+bx00000000 B
+bx00000000 C
+b1000011 D
+b1000011 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#1940000
+0!
+03
+#1945000
+1!
+1%
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b1000011 D
+b10 F
+b10 G
+b1000 I
+0K
+1r
+b11110011001 v
+b1100100 w
+b1100100 y
+#1950000
+0!
+03
+#1955000
+1!
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b1000011 D
+b1 F
+b10 G
+b1000 I
+0K
+#1960000
+0!
+03
+#1965000
+1!
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b1000011 D
+b0 F
+b10 G
+b1000 I
+0K
+#1970000
+0!
+03
+#1975000
+1!
+13
+b1011 ;
+b1100 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b1000011 D
+b10000110 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+0T
+#1980000
+0!
+03
+#1985000
+1!
+b1000011 +
+0-
+13
+b1100 ;
+b1100 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#1990000
+0!
+03
+#1995000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b10 F
+b10 G
+b1000 I
+0K
+#2000000
+0!
+03
+#2005000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b1 F
+b10 G
+b1000 I
+0K
+#2010000
+0!
+03
+#2015000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b0 F
+b10 G
+b1000 I
+0K
+#2020000
+0!
+03
+#2025000
+1!
+13
+b1100 ;
+b1101 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+1T
+#2030000
+0!
+03
+#2035000
+1!
+13
+b1101 ;
+b1101 <
+x=
+x>
+1?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#2040000
+0!
+03
+#2045000
+1!
+0%
+13
+b1101 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b10 F
+b10 G
+b1000 I
+0K
+b10100 i
+b100100 l
+0r
+b11111111101 v
+b1100100 w
+b11001000 y
+#2050000
+0!
+03
+#2055000
+1!
+13
+b1101 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b1 F
+b10 G
+b1000 I
+0K
+#2060000
+0!
+03
+#2065000
+1!
+13
+b1101 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b0 F
+b10 G
+b1000 I
+0K
+#2070000
+0!
+03
+#2075000
+1!
+13
+b1101 ;
+b1110 <
+x=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1L
+1N
+1S
+0T
+#2080000
+0!
+03
+#2085000
+1!
+x&
+13
+1:
+b1110 ;
+b1110 <
+x=
+0>
+0?
+0@
+0A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+1K
+0N
+0S
+0T
+xq
+b100000100101 u
+#2090000
+0!
+03
+#2095000
+1!
+0&
+13
+b1110 ;
+b1110 <
+0=
+0>
+0?
+0@
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b10 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+1K
+0q
+b100000101111 u
+#2100000
+0!
+03
+#2105000
+1!
+13
+b1110 ;
+0=
+0?
+bx00000000 B
+b10000110 D
+b1 F
+b10 G
+b1000 I
+1K
+#2110000
+0!
+03
+#2115000
+1!
+13
+b1110 ;
+0=
+0?
+bx00000000 B
+b10000110 D
+b0 F
+b10 G
+b1000 I
+1K
+#2120000
+0!
+03
+#2125000
+1!
+13
+b1110 ;
+b101 <
+0=
+0>
+0?
+0@
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+1K
+0L
+1S
+0T
+#2130000
+0!
+03
+#2135000
+1!
+1(
+13
+0:
+b101 ;
+b1010 <
+0=
+0>
+0?
+0@
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b10 G
+b11 H
+b1000 I
+b0 J
+0K
+1M
+0R
+0S
+0T
+#2140000
+0!
+03
+#2145000
+1!
+0&
+0(
+13
+b1010 ;
+b1010 <
+0=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+0M
+1N
+1R
+0T
+#2150000
+0!
+0,
+03
+09
+b1010 <
+x>
+0@
+1A
+bx00000000 C
+b10000110 E
+b11 H
+b0 J
+1N
+0O
+#2155000
+1!
+0&
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b10 F
+b11 G
+b0 I
+0K
+#2160000
+0!
+0)
+bx *
+x,
+03
+05
+bx 8
+x9
+b1010 <
+x>
+0@
+1A
+bx00000000 C
+b10000110 E
+b11 H
+b0 J
+1N
+xO
+#2165000
+1!
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b1 F
+b11 G
+b0 I
+0K
+#2170000
+0!
+03
+#2175000
+1!
+13
+b1010 ;
+x=
+0?
+bx00000000 B
+b10000110 D
+b0 F
+b11 G
+b0 I
+0K
+#2180000
+0!
+03
+#2185000
+1!
+13
+b1010 ;
+b1011 <
+x=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#2190000
+0!
+03
+#2195000
+1!
+13
+b1011 ;
+b1011 <
+x=
+x>
+0?
+1@
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b10000110 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#2200000
+0!
+03
+#2205000
+1!
+1%
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b10 F
+b11 G
+b0 I
+0K
+1r
+b100010011101 v
+b10100000 w
+b1101110 y
+#2210000
+0!
+03
+#2215000
+1!
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b1 F
+b11 G
+b0 I
+0K
+#2220000
+0!
+03
+#2225000
+1!
+13
+b1011 ;
+x=
+1?
+bx00000000 B
+b10000110 D
+b0 F
+b11 G
+b0 I
+0K
+#2230000
+0!
+03
+#2235000
+1!
+13
+b1011 ;
+b1100 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b10000110 D
+b100001100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#2240000
+0!
+03
+#2245000
+1!
+b10000110 +
+13
+b1100 ;
+b1100 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b100001100 D
+b100001100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#2250000
+0!
+03
+#2255000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b100001100 D
+b10 F
+b11 G
+b0 I
+0K
+#2260000
+0!
+03
+#2265000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b100001100 D
+b1 F
+b11 G
+b0 I
+0K
+#2270000
+0!
+03
+#2275000
+1!
+13
+b1100 ;
+x=
+1?
+bx00000000 B
+b100001100 D
+b0 F
+b11 G
+b0 I
+0K
+#2280000
+0!
+03
+#2285000
+1!
+13
+b1100 ;
+b1101 <
+x=
+x>
+1?
+1A
+bx00000000 B
+bx00000000 C
+b100001100 D
+b100001100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+1T
+#2290000
+0!
+03
+#2295000
+1!
+13
+b1101 ;
+b1101 <
+x=
+x>
+1?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b100001100 D
+b100001100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#2300000
+0!
+03
+#2305000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+x=
+x>
+0?
+0@
+1A
+bx00000000 B
+bx00000000 C
+b100001100 D
+b100001100 E
+b10 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+b10101 i
+1p
+1q
+0r
+b100100000001 u
+b100100000001 v
+b1100100 w
+b11010010 y
+#2310000
+0!
+03
+#2315000
+1!
+13
+b1101 ;
+x=
+0?
+bx00000000 B
+b100001100 D
+b1 F
+b11 G
+b0 I
+0K
+#2320000
+0!
+03
+#2325000
+1!
+13
+b1101 ;
+x=
+0?
+bx00000000 B
+b100001100 D
+b0 F
+b11 G
+b0 I
+0K
+#2330000
+0!
+03
+#2335000
+1!
+13
+b1101 ;
+b1010 <
+x=
+x>
+0?
+0@
+1A
+bx00000000 B
+b0 C
+b100001100 D
+b100001100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b1 J
+0K
+1N
+1S
+0T
+#2340000
+0!
+03
+#2345000
+1!
+13
+b1010 ;
+b1010 <
+x=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100001100 D
+b100001100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#2350000
+0!
+03
+#2355000
+1!
+1&
+13
+b1010 ;
+0=
+0?
+b0 B
+b100001100 D
+b10 F
+b11 G
+b1 I
+0K
+#2360000
+0!
+03
+#2365000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100001100 D
+b1 F
+b11 G
+b1 I
+0K
+#2370000
+0!
+03
+#2375000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100001100 D
+b0 F
+b11 G
+b1 I
+0K
+#2380000
+0!
+03
+#2385000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100001100 D
+b100001100 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#2390000
+0!
+03
+#2395000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b100001100 D
+b100001100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#2400000
+0!
+03
+#2405000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b100001100 D
+b10 F
+b11 G
+b1 I
+0K
+1r
+b100101100101 v
+b1100100 w
+b1100100 y
+#2410000
+0!
+03
+#2415000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100001100 D
+b1 F
+b11 G
+b1 I
+0K
+#2420000
+0!
+03
+#2425000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100001100 D
+b0 F
+b11 G
+b1 I
+0K
+#2430000
+0!
+03
+#2435000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100001100 D
+b11001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#2440000
+0!
+03
+#2445000
+1!
+b1100 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#2450000
+0!
+03
+#2455000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001 D
+b10 F
+b11 G
+b1 I
+0K
+#2460000
+0!
+03
+#2465000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001 D
+b1 F
+b11 G
+b1 I
+0K
+#2470000
+0!
+03
+#2475000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001 D
+b0 F
+b11 G
+b1 I
+0K
+#2480000
+0!
+03
+#2485000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+1T
+#2490000
+0!
+03
+#2495000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#2500000
+0!
+03
+#2505000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b10 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+b10110 i
+0p
+0q
+0r
+b100111001001 u
+b100111001001 v
+b1100100 w
+b11001000 y
+#2510000
+0!
+03
+#2515000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b11001 D
+b1 F
+b11 G
+b1 I
+0K
+#2520000
+0!
+03
+#2525000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b11001 D
+b0 F
+b11 G
+b1 I
+0K
+#2530000
+0!
+03
+#2535000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b10 J
+0K
+1N
+1S
+0T
+#2540000
+0!
+03
+#2545000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#2550000
+0!
+03
+#2555000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001 D
+b10 F
+b11 G
+b10 I
+0K
+#2560000
+0!
+03
+#2565000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001 D
+b1 F
+b11 G
+b10 I
+0K
+#2570000
+0!
+03
+#2575000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001 D
+b0 F
+b11 G
+b10 I
+0K
+#2580000
+0!
+03
+#2585000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#2590000
+0!
+03
+#2595000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b11001 D
+b11001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#2600000
+0!
+03
+#2605000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001 D
+b10 F
+b11 G
+b10 I
+0K
+1r
+b101000101101 v
+b1100100 w
+b1100100 y
+#2610000
+0!
+03
+#2615000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001 D
+b1 F
+b11 G
+b10 I
+0K
+#2620000
+0!
+03
+#2625000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001 D
+b0 F
+b11 G
+b10 I
+0K
+#2630000
+0!
+03
+#2635000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001 D
+b110010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#2640000
+0!
+03
+#2645000
+1!
+b11001 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#2650000
+0!
+03
+#2655000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010 D
+b10 F
+b11 G
+b10 I
+0K
+#2660000
+0!
+03
+#2665000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010 D
+b1 F
+b11 G
+b10 I
+0K
+#2670000
+0!
+03
+#2675000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010 D
+b0 F
+b11 G
+b10 I
+0K
+#2680000
+0!
+03
+#2685000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+1T
+#2690000
+0!
+03
+#2695000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#2700000
+0!
+03
+#2705000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b10 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+b10111 i
+1p
+1q
+0r
+b101010010001 u
+b101010010001 v
+b1100100 w
+b11001000 y
+#2710000
+0!
+03
+#2715000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b110010 D
+b1 F
+b11 G
+b10 I
+0K
+#2720000
+0!
+03
+#2725000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b110010 D
+b0 F
+b11 G
+b10 I
+0K
+#2730000
+0!
+03
+#2735000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b11 J
+0K
+1N
+1S
+0T
+#2740000
+0!
+03
+#2745000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#2750000
+0!
+03
+#2755000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010 D
+b10 F
+b11 G
+b11 I
+0K
+#2760000
+0!
+03
+#2765000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010 D
+b1 F
+b11 G
+b11 I
+0K
+#2770000
+0!
+03
+#2775000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010 D
+b0 F
+b11 G
+b11 I
+0K
+#2780000
+0!
+03
+#2785000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#2790000
+0!
+03
+#2795000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b110010 D
+b110010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#2800000
+0!
+03
+#2805000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010 D
+b10 F
+b11 G
+b11 I
+0K
+1r
+b101011110101 v
+b1100100 w
+b1100100 y
+#2810000
+0!
+03
+#2815000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010 D
+b1 F
+b11 G
+b11 I
+0K
+#2820000
+0!
+03
+#2825000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010 D
+b0 F
+b11 G
+b11 I
+0K
+#2830000
+0!
+03
+#2835000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010 D
+b1100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#2840000
+0!
+03
+#2845000
+1!
+b110010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#2850000
+0!
+03
+#2855000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1100101 D
+b10 F
+b11 G
+b11 I
+0K
+#2860000
+0!
+03
+#2865000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1100101 D
+b1 F
+b11 G
+b11 I
+0K
+#2870000
+0!
+03
+#2875000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1100101 D
+b0 F
+b11 G
+b11 I
+0K
+#2880000
+0!
+03
+#2885000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+1T
+#2890000
+0!
+03
+#2895000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#2900000
+0!
+03
+#2905000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b10 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+b11000 i
+0p
+0q
+0r
+b101101011001 u
+b101101011001 v
+b1100100 w
+b11001000 y
+#2910000
+0!
+03
+#2915000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1100101 D
+b1 F
+b11 G
+b11 I
+0K
+#2920000
+0!
+03
+#2925000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1100101 D
+b0 F
+b11 G
+b11 I
+0K
+#2930000
+0!
+03
+#2935000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b100 J
+0K
+1N
+1S
+0T
+#2940000
+0!
+03
+#2945000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#2950000
+0!
+03
+#2955000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1100101 D
+b10 F
+b11 G
+b100 I
+0K
+#2960000
+0!
+03
+#2965000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1100101 D
+b1 F
+b11 G
+b100 I
+0K
+#2970000
+0!
+03
+#2975000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1100101 D
+b0 F
+b11 G
+b100 I
+0K
+#2980000
+0!
+03
+#2985000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#2990000
+0!
+03
+#2995000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b1100101 D
+b1100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#3000000
+0!
+03
+#3005000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b1100101 D
+b10 F
+b11 G
+b100 I
+0K
+1r
+b101110111101 v
+b1100100 w
+b1100100 y
+#3010000
+0!
+03
+#3015000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1100101 D
+b1 F
+b11 G
+b100 I
+0K
+#3020000
+0!
+03
+#3025000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1100101 D
+b0 F
+b11 G
+b100 I
+0K
+#3030000
+0!
+03
+#3035000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1100101 D
+b11001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#3040000
+0!
+03
+#3045000
+1!
+b1100101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#3050000
+0!
+03
+#3055000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001010 D
+b10 F
+b11 G
+b100 I
+0K
+#3060000
+0!
+03
+#3065000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001010 D
+b1 F
+b11 G
+b100 I
+0K
+#3070000
+0!
+03
+#3075000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b11001010 D
+b0 F
+b11 G
+b100 I
+0K
+#3080000
+0!
+03
+#3085000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+1T
+#3090000
+0!
+03
+#3095000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#3100000
+0!
+03
+#3105000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b10 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+b11001 i
+1p
+1q
+0r
+b110000100001 u
+b110000100001 v
+b1100100 w
+b11001000 y
+#3110000
+0!
+03
+#3115000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b11001010 D
+b1 F
+b11 G
+b100 I
+0K
+#3120000
+0!
+03
+#3125000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b11001010 D
+b0 F
+b11 G
+b100 I
+0K
+#3130000
+0!
+03
+#3135000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b101 J
+0K
+1N
+1S
+0T
+#3140000
+0!
+03
+#3145000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#3150000
+0!
+03
+#3155000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001010 D
+b10 F
+b11 G
+b101 I
+0K
+#3160000
+0!
+03
+#3165000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001010 D
+b1 F
+b11 G
+b101 I
+0K
+#3170000
+0!
+03
+#3175000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b11001010 D
+b0 F
+b11 G
+b101 I
+0K
+#3180000
+0!
+03
+#3185000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#3190000
+0!
+03
+#3195000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b11001010 D
+b11001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#3200000
+0!
+03
+#3205000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001010 D
+b10 F
+b11 G
+b101 I
+0K
+1r
+b110010000101 v
+b1100100 w
+b1100100 y
+#3210000
+0!
+03
+#3215000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001010 D
+b1 F
+b11 G
+b101 I
+0K
+#3220000
+0!
+03
+#3225000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b11001010 D
+b0 F
+b11 G
+b101 I
+0K
+#3230000
+0!
+03
+#3235000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b11001010 D
+b110010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#3240000
+0!
+03
+#3245000
+1!
+b11001010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#3250000
+0!
+03
+#3255000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010101 D
+b10 F
+b11 G
+b101 I
+0K
+#3260000
+0!
+03
+#3265000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010101 D
+b1 F
+b11 G
+b101 I
+0K
+#3270000
+0!
+03
+#3275000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b110010101 D
+b0 F
+b11 G
+b101 I
+0K
+#3280000
+0!
+03
+#3285000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+1T
+#3290000
+0!
+03
+#3295000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#3300000
+0!
+03
+#3305000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b10 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+b11010 i
+0p
+0q
+0r
+b110011101001 u
+b110011101001 v
+b1100100 w
+b11001000 y
+#3310000
+0!
+03
+#3315000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b110010101 D
+b1 F
+b11 G
+b101 I
+0K
+#3320000
+0!
+03
+#3325000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b110010101 D
+b0 F
+b11 G
+b101 I
+0K
+#3330000
+0!
+03
+#3335000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b110 J
+0K
+1N
+1S
+0T
+#3340000
+0!
+03
+#3345000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#3350000
+0!
+03
+#3355000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010101 D
+b10 F
+b11 G
+b110 I
+0K
+#3360000
+0!
+03
+#3365000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010101 D
+b1 F
+b11 G
+b110 I
+0K
+#3370000
+0!
+03
+#3375000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b110010101 D
+b0 F
+b11 G
+b110 I
+0K
+#3380000
+0!
+03
+#3385000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#3390000
+0!
+03
+#3395000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b110010101 D
+b110010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#3400000
+0!
+03
+#3405000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010101 D
+b10 F
+b11 G
+b110 I
+0K
+1r
+b110101001101 v
+b1100100 w
+b1100100 y
+#3410000
+0!
+03
+#3415000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010101 D
+b1 F
+b11 G
+b110 I
+0K
+#3420000
+0!
+03
+#3425000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b110010101 D
+b0 F
+b11 G
+b110 I
+0K
+#3430000
+0!
+03
+#3435000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b110010101 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#3440000
+0!
+03
+#3445000
+1!
+b10010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#3450000
+0!
+03
+#3455000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b110 I
+0K
+#3460000
+0!
+03
+#3465000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#3470000
+0!
+03
+#3475000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#3480000
+0!
+03
+#3485000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+1T
+#3490000
+0!
+03
+#3495000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#3500000
+0!
+03
+#3505000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b10 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+b11011 i
+1p
+1q
+0r
+b110110110001 u
+b110110110001 v
+b1100100 w
+b11001000 y
+#3510000
+0!
+03
+#3515000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#3520000
+0!
+03
+#3525000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#3530000
+0!
+03
+#3535000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b111 J
+0K
+1N
+1S
+0T
+#3540000
+0!
+03
+#3545000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#3550000
+0!
+03
+#3555000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+#3560000
+0!
+03
+#3565000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#3570000
+0!
+03
+#3575000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#3580000
+0!
+03
+#3585000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#3590000
+0!
+03
+#3595000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#3600000
+0!
+03
+#3605000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+1r
+b111000010101 v
+b1100100 w
+b1100100 y
+#3610000
+0!
+03
+#3615000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#3620000
+0!
+03
+#3625000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#3630000
+0!
+03
+#3635000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#3640000
+0!
+03
+#3645000
+1!
+b101010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#3650000
+0!
+03
+#3655000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+#3660000
+0!
+03
+#3665000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#3670000
+0!
+03
+#3675000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#3680000
+0!
+03
+#3685000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+1T
+#3690000
+0!
+03
+#3695000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#3700000
+0!
+03
+#3705000
+1!
+0%
+1&
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+b11100 i
+zp
+0r
+b111001111001 v
+b1100100 w
+b11001000 y
+#3710000
+0!
+03
+#3715000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#3720000
+0!
+03
+#3725000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#3730000
+0!
+03
+#3735000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b1000 J
+0K
+1N
+1S
+0T
+#3740000
+0!
+03
+#3745000
+1!
+0&
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+0q
+b111010100001 u
+#3750000
+0!
+03
+#3755000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+#3760000
+0!
+03
+#3765000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#3770000
+0!
+03
+#3775000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#3780000
+0!
+03
+#3785000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#3790000
+0!
+03
+#3795000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#3800000
+0!
+03
+#3805000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+1r
+b111011011101 v
+b1100100 w
+b111100 y
+#3810000
+0!
+03
+#3815000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#3820000
+0!
+03
+#3825000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#3830000
+0!
+03
+#3835000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#3840000
+0!
+03
+#3845000
+1!
+b1010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#3850000
+0!
+03
+#3855000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+#3860000
+0!
+03
+#3865000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#3870000
+0!
+03
+#3875000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#3880000
+0!
+03
+#3885000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+1T
+#3890000
+0!
+03
+#3895000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#3900000
+0!
+03
+#3905000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+b10100 i
+b10000001 l
+0p
+0r
+b111101000001 v
+b1100100 w
+b10100000 y
+#3910000
+0!
+03
+#3915000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#3920000
+0!
+03
+#3925000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#3930000
+0!
+03
+#3935000
+1!
+13
+b1101 ;
+b1110 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+1L
+0N
+1S
+0T
+#3940000
+0!
+03
+#3945000
+1!
+13
+1:
+b1110 ;
+b1110 <
+0=
+0>
+0?
+0@
+0A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0N
+0S
+0T
+#3950000
+0!
+03
+#3955000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+1K
+#3960000
+0!
+03
+#3965000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+1K
+#3970000
+0!
+03
+#3975000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+1K
+#3980000
+0!
+03
+#3985000
+1!
+13
+b1110 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0L
+1S
+0T
+#3990000
+0!
+03
+#3995000
+1!
+1(
+13
+0:
+b101 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+1M
+0R
+0S
+0T
+#4000000
+0!
+03
+b11111111 O"
+1P"
+0Q"
+0R"
+0S"
+1T"
+#4005000
+1!
+13
+b101 ;
+0=
+0?
+b0 B
+b10101010 D
+b11 F
+b11 G
+b1000 I
+0K
+#4010000
+0!
+1(
+1)
+b11111111 *
+03
+15
+b11111111 8
+b1010 <
+0>
+0@
+b0 C
+b10101010 E
+b11 H
+b0 J
+1M
+#4015000
+1!
+0&
+0(
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+0M
+1N
+1R
+0T
+#4020000
+0!
+b11 $
+03
+#4025000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b0 I
+0K
+#4030000
+0!
+03
+#4035000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b0 I
+0K
+#4040000
+0!
+03
+#4045000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b0 I
+0K
+#4050000
+0!
+03
+#4055000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#4060000
+0!
+03
+#4065000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#4070000
+0!
+03
+#4075000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b0 I
+0K
+1r
+b111111101011 v
+b10101010 w
+b101001010 y
+#4080000
+0!
+03
+#4085000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b0 I
+0K
+#4090000
+0!
+03
+#4095000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b0 I
+0K
+#4100000
+0!
+03
+#4105000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#4110000
+0!
+03
+#4115000
+1!
+b10101010 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#4120000
+0!
+03
+#4125000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b0 I
+0K
+#4130000
+0!
+03
+#4135000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b0 I
+0K
+#4140000
+0!
+03
+#4145000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b0 I
+0K
+#4150000
+0!
+03
+#4155000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+1T
+#4160000
+0!
+03
+#4165000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#4170000
+0!
+03
+#4175000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b10 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+b10101 i
+1p
+1q
+0r
+b1000001001111 u
+b1000001001111 v
+b1100100 w
+b110101110 y
+#4180000
+0!
+03
+#4185000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b0 I
+0K
+#4190000
+0!
+03
+#4195000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b0 I
+0K
+#4200000
+0!
+03
+#4205000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b1 J
+0K
+1N
+1S
+0T
+#4210000
+0!
+03
+#4215000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#4220000
+0!
+03
+#4225000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b1 I
+0K
+#4230000
+0!
+03
+#4235000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b1 I
+0K
+#4240000
+0!
+03
+#4245000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b1 I
+0K
+#4250000
+0!
+03
+#4255000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#4260000
+0!
+03
+#4265000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#4270000
+0!
+03
+#4275000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b1 I
+0K
+1r
+b1000010110011 v
+b1100100 w
+b1100100 y
+#4280000
+0!
+03
+#4285000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b1 I
+0K
+#4290000
+0!
+03
+#4295000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b1 I
+0K
+#4300000
+0!
+03
+#4305000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#4310000
+0!
+03
+#4315000
+1!
+b1010100 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#4320000
+0!
+03
+#4325000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b1 I
+0K
+#4330000
+0!
+03
+#4335000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b1 I
+0K
+#4340000
+0!
+03
+#4345000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b1 I
+0K
+#4350000
+0!
+03
+#4355000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+1T
+#4360000
+0!
+03
+#4365000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#4370000
+0!
+03
+#4375000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b10 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+b10110 i
+0p
+0q
+0r
+b1000100010111 u
+b1000100010111 v
+b1100100 w
+b11001000 y
+#4380000
+0!
+03
+#4385000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b1 I
+0K
+#4390000
+0!
+03
+#4395000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b1 I
+0K
+#4400000
+0!
+03
+#4405000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b10 J
+0K
+1N
+1S
+0T
+#4410000
+0!
+03
+#4415000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#4420000
+0!
+03
+#4425000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b10 I
+0K
+#4430000
+0!
+03
+#4435000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b10 I
+0K
+#4440000
+0!
+03
+#4445000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b10 I
+0K
+#4450000
+0!
+03
+#4455000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#4460000
+0!
+03
+#4465000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#4470000
+0!
+03
+#4475000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b10 I
+0K
+1r
+b1000101111011 v
+b1100100 w
+b1100100 y
+#4480000
+0!
+03
+#4485000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b10 I
+0K
+#4490000
+0!
+03
+#4495000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b10 I
+0K
+#4500000
+0!
+03
+#4505000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#4510000
+0!
+03
+#4515000
+1!
+b10101001 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#4520000
+0!
+03
+#4525000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b10 I
+0K
+#4530000
+0!
+03
+#4535000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b10 I
+0K
+#4540000
+0!
+03
+#4545000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b10 I
+0K
+#4550000
+0!
+03
+#4555000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+1T
+#4560000
+0!
+03
+#4565000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#4570000
+0!
+03
+#4575000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b10 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+b10111 i
+1p
+1q
+0r
+b1000111011111 u
+b1000111011111 v
+b1100100 w
+b11001000 y
+#4580000
+0!
+03
+#4585000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b10 I
+0K
+#4590000
+0!
+03
+#4595000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b10 I
+0K
+#4600000
+0!
+03
+#4605000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b11 J
+0K
+1N
+1S
+0T
+#4610000
+0!
+03
+#4615000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#4620000
+0!
+03
+#4625000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b11 I
+0K
+#4630000
+0!
+03
+#4635000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b11 I
+0K
+#4640000
+0!
+03
+#4645000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b11 I
+0K
+#4650000
+0!
+03
+#4655000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#4660000
+0!
+03
+#4665000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#4670000
+0!
+03
+#4675000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b11 I
+0K
+1r
+b1001001000011 v
+b1100100 w
+b1100100 y
+#4680000
+0!
+03
+#4685000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b11 I
+0K
+#4690000
+0!
+03
+#4695000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b11 I
+0K
+#4700000
+0!
+03
+#4705000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#4710000
+0!
+03
+#4715000
+1!
+b1010010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#4720000
+0!
+03
+#4725000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b11 I
+0K
+#4730000
+0!
+03
+#4735000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b11 I
+0K
+#4740000
+0!
+03
+#4745000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b11 I
+0K
+#4750000
+0!
+03
+#4755000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+1T
+#4760000
+0!
+03
+#4765000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#4770000
+0!
+03
+#4775000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b10 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+b11000 i
+0p
+0q
+0r
+b1001010100111 u
+b1001010100111 v
+b1100100 w
+b11001000 y
+#4780000
+0!
+03
+#4785000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b11 I
+0K
+#4790000
+0!
+03
+#4795000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b11 I
+0K
+#4800000
+0!
+03
+#4805000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b100 J
+0K
+1N
+1S
+0T
+#4810000
+0!
+03
+#4815000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#4820000
+0!
+03
+#4825000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b100 I
+0K
+#4830000
+0!
+03
+#4835000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b100 I
+0K
+#4840000
+0!
+03
+#4845000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b100 I
+0K
+#4850000
+0!
+03
+#4855000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#4860000
+0!
+03
+#4865000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#4870000
+0!
+03
+#4875000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b100 I
+0K
+1r
+b1001100001011 v
+b1100100 w
+b1100100 y
+#4880000
+0!
+03
+#4885000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b100 I
+0K
+#4890000
+0!
+03
+#4895000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b100 I
+0K
+#4900000
+0!
+03
+#4905000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#4910000
+0!
+03
+#4915000
+1!
+b10100101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#4920000
+0!
+03
+#4925000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b100 I
+0K
+#4930000
+0!
+03
+#4935000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b100 I
+0K
+#4940000
+0!
+03
+#4945000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b100 I
+0K
+#4950000
+0!
+03
+#4955000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+1T
+#4960000
+0!
+03
+#4965000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#4970000
+0!
+03
+#4975000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b10 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+b11001 i
+1p
+1q
+0r
+b1001101101111 u
+b1001101101111 v
+b1100100 w
+b11001000 y
+#4980000
+0!
+03
+#4985000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b100 I
+0K
+#4990000
+0!
+03
+#4995000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b100 I
+0K
+#5000000
+0!
+03
+#5005000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b101 J
+0K
+1N
+1S
+0T
+#5010000
+0!
+03
+#5015000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#5020000
+0!
+03
+#5025000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b101 I
+0K
+#5030000
+0!
+03
+#5035000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b101 I
+0K
+#5040000
+0!
+03
+#5045000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b101 I
+0K
+#5050000
+0!
+03
+#5055000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#5060000
+0!
+03
+#5065000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#5070000
+0!
+03
+#5075000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b101 I
+0K
+1r
+b1001111010011 v
+b1100100 w
+b1100100 y
+#5080000
+0!
+03
+#5085000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b101 I
+0K
+#5090000
+0!
+03
+#5095000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b101 I
+0K
+#5100000
+0!
+03
+#5105000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#5110000
+0!
+03
+#5115000
+1!
+b1001010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#5120000
+0!
+03
+#5125000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b101 I
+0K
+#5130000
+0!
+03
+#5135000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b101 I
+0K
+#5140000
+0!
+03
+#5145000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b101 I
+0K
+#5150000
+0!
+03
+#5155000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+1T
+#5160000
+0!
+03
+#5165000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#5170000
+0!
+03
+#5175000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b10 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+b11010 i
+0p
+0q
+0r
+b1010000110111 u
+b1010000110111 v
+b1100100 w
+b11001000 y
+#5180000
+0!
+03
+#5185000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b101 I
+0K
+#5190000
+0!
+03
+#5195000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b101 I
+0K
+#5200000
+0!
+03
+#5205000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b110 J
+0K
+1N
+1S
+0T
+#5210000
+0!
+03
+#5215000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#5220000
+0!
+03
+#5225000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b110 I
+0K
+#5230000
+0!
+03
+#5235000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b110 I
+0K
+#5240000
+0!
+03
+#5245000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b110 I
+0K
+#5250000
+0!
+03
+#5255000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#5260000
+0!
+03
+#5265000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#5270000
+0!
+03
+#5275000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b110 I
+0K
+1r
+b1010010011011 v
+b1100100 w
+b1100100 y
+#5280000
+0!
+03
+#5285000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b110 I
+0K
+#5290000
+0!
+03
+#5295000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b110 I
+0K
+#5300000
+0!
+03
+#5305000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#5310000
+0!
+03
+#5315000
+1!
+b10010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#5320000
+0!
+03
+#5325000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b110 I
+0K
+#5330000
+0!
+03
+#5335000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#5340000
+0!
+03
+#5345000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#5350000
+0!
+03
+#5355000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+1T
+#5360000
+0!
+03
+#5365000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#5370000
+0!
+03
+#5375000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b10 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+b11011 i
+1p
+1q
+0r
+b1010011111111 u
+b1010011111111 v
+b1100100 w
+b11001000 y
+#5380000
+0!
+03
+#5385000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#5390000
+0!
+03
+#5395000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#5400000
+0!
+03
+#5405000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b111 J
+0K
+1N
+1S
+0T
+#5410000
+0!
+03
+#5415000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#5420000
+0!
+03
+#5425000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+#5430000
+0!
+03
+#5435000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#5440000
+0!
+03
+#5445000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#5450000
+0!
+03
+#5455000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#5460000
+0!
+03
+#5465000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#5470000
+0!
+03
+#5475000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+1r
+b1010101100011 v
+b1100100 w
+b1100100 y
+#5480000
+0!
+03
+#5485000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#5490000
+0!
+03
+#5495000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#5500000
+0!
+03
+#5505000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#5510000
+0!
+03
+#5515000
+1!
+b101010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#5520000
+0!
+03
+#5525000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+#5530000
+0!
+03
+#5535000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#5540000
+0!
+03
+#5545000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#5550000
+0!
+03
+#5555000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+1T
+#5560000
+0!
+03
+#5565000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#5570000
+0!
+03
+#5575000
+1!
+0%
+1&
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+b11100 i
+zp
+0r
+b1010111000111 v
+b1100100 w
+b11001000 y
+#5580000
+0!
+03
+#5585000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#5590000
+0!
+03
+#5595000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#5600000
+0!
+03
+#5605000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b1000 J
+0K
+1N
+1S
+0T
+#5610000
+0!
+03
+#5615000
+1!
+0&
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+0q
+b1010111101111 u
+#5620000
+0!
+03
+#5625000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+#5630000
+0!
+03
+#5635000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#5640000
+0!
+03
+#5645000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#5650000
+0!
+03
+#5655000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#5660000
+0!
+03
+#5665000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#5670000
+0!
+03
+#5675000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+1r
+b1011000101011 v
+b1100100 w
+b111100 y
+#5680000
+0!
+03
+#5685000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#5690000
+0!
+03
+#5695000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#5700000
+0!
+03
+#5705000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#5710000
+0!
+03
+#5715000
+1!
+b1010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#5720000
+0!
+03
+#5725000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+#5730000
+0!
+03
+#5735000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#5740000
+0!
+03
+#5745000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#5750000
+0!
+03
+#5755000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+1T
+#5760000
+0!
+03
+#5765000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#5770000
+0!
+03
+#5775000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+b10100 i
+b1001 l
+0p
+0r
+b1011010001111 v
+b1100100 w
+b10100000 y
+#5780000
+0!
+03
+#5785000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#5790000
+0!
+03
+#5795000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#5800000
+0!
+03
+#5805000
+1!
+13
+b1101 ;
+b1110 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+1L
+0N
+1S
+0T
+#5810000
+0!
+03
+#5815000
+1!
+13
+1:
+b1110 ;
+b1110 <
+0=
+0>
+0?
+0@
+0A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0N
+0S
+0T
+#5820000
+0!
+03
+#5825000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+1K
+#5830000
+0!
+03
+#5835000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+1K
+#5840000
+0!
+03
+#5845000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+1K
+#5850000
+0!
+03
+#5855000
+1!
+13
+b1110 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0L
+1S
+0T
+#5860000
+0!
+03
+#5865000
+1!
+1(
+13
+0:
+b101 ;
+b1010 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b0 J
+0K
+1M
+0R
+0S
+0T
+#5870000
+0!
+03
+#5875000
+1!
+0&
+0(
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+0M
+1N
+1R
+0T
+#5880000
+0!
+1,
+03
+19
+b1010 <
+0>
+0@
+1A
+b0 C
+b10101010 E
+b11 H
+b0 J
+1N
+1O
+#5885000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b0 I
+0K
+#5890000
+0!
+0)
+bx *
+x,
+03
+05
+bx 8
+x9
+b1010 <
+0>
+0@
+1A
+b0 C
+b10101010 E
+b11 H
+b0 J
+1N
+xO
+#5895000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b0 I
+0K
+#5900000
+0!
+03
+#5905000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b0 I
+0K
+#5910000
+0!
+03
+#5915000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#5920000
+0!
+03
+#5925000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#5930000
+0!
+03
+#5935000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b0 I
+0K
+1r
+b1011100101111 v
+b10100000 w
+b101000000 y
+#5940000
+0!
+03
+#5945000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b0 I
+0K
+#5950000
+0!
+03
+#5955000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b0 I
+0K
+#5960000
+0!
+03
+#5965000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+0T
+#5970000
+0!
+03
+#5975000
+1!
+b10101010 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#5980000
+0!
+03
+#5985000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b0 I
+0K
+#5990000
+0!
+03
+#5995000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b0 I
+0K
+#6000000
+0!
+03
+#6005000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b0 I
+0K
+#6010000
+0!
+03
+#6015000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+1S
+1T
+#6020000
+0!
+03
+#6025000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+0S
+0T
+#6030000
+0!
+03
+#6035000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b10 F
+b11 G
+b11 H
+b0 I
+b0 J
+0K
+1N
+b10101 i
+1p
+1q
+0r
+b1011110010011 u
+b1011110010011 v
+b1100100 w
+b110100100 y
+#6040000
+0!
+03
+#6045000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b0 I
+0K
+#6050000
+0!
+03
+#6055000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b0 I
+0K
+#6060000
+0!
+03
+#6065000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b0 I
+b1 J
+0K
+1N
+1S
+0T
+#6070000
+0!
+03
+#6075000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#6080000
+0!
+03
+#6085000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b1 I
+0K
+#6090000
+0!
+03
+#6095000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b1 I
+0K
+#6100000
+0!
+03
+#6105000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b1 I
+0K
+#6110000
+0!
+03
+#6115000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#6120000
+0!
+03
+#6125000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#6130000
+0!
+03
+#6135000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b11 G
+b1 I
+0K
+1r
+b1011111110111 v
+b1100100 w
+b1100100 y
+#6140000
+0!
+03
+#6145000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b11 G
+b1 I
+0K
+#6150000
+0!
+03
+#6155000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b11 G
+b1 I
+0K
+#6160000
+0!
+03
+#6165000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+0T
+#6170000
+0!
+03
+#6175000
+1!
+b1010100 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#6180000
+0!
+03
+#6185000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b1 I
+0K
+#6190000
+0!
+03
+#6195000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b1 I
+0K
+#6200000
+0!
+03
+#6205000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b1 I
+0K
+#6210000
+0!
+03
+#6215000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+1S
+1T
+#6220000
+0!
+03
+#6225000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+0S
+0T
+#6230000
+0!
+03
+#6235000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b10 F
+b11 G
+b11 H
+b1 I
+b1 J
+0K
+1N
+b10110 i
+0p
+0q
+0r
+b1100001011011 u
+b1100001011011 v
+b1100100 w
+b11001000 y
+#6240000
+0!
+03
+#6245000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b1 I
+0K
+#6250000
+0!
+03
+#6255000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b1 I
+0K
+#6260000
+0!
+03
+#6265000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b1 I
+b10 J
+0K
+1N
+1S
+0T
+#6270000
+0!
+03
+#6275000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#6280000
+0!
+03
+#6285000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b10 I
+0K
+#6290000
+0!
+03
+#6295000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b10 I
+0K
+#6300000
+0!
+03
+#6305000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b10 I
+0K
+#6310000
+0!
+03
+#6315000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#6320000
+0!
+03
+#6325000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101001 D
+b10101001 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#6330000
+0!
+03
+#6335000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b10 F
+b11 G
+b10 I
+0K
+1r
+b1100010111111 v
+b1100100 w
+b1100100 y
+#6340000
+0!
+03
+#6345000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b1 F
+b11 G
+b10 I
+0K
+#6350000
+0!
+03
+#6355000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101001 D
+b0 F
+b11 G
+b10 I
+0K
+#6360000
+0!
+03
+#6365000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101001 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+0T
+#6370000
+0!
+03
+#6375000
+1!
+b10101001 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#6380000
+0!
+03
+#6385000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b10 I
+0K
+#6390000
+0!
+03
+#6395000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b10 I
+0K
+#6400000
+0!
+03
+#6405000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b10 I
+0K
+#6410000
+0!
+03
+#6415000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+1S
+1T
+#6420000
+0!
+03
+#6425000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+0S
+0T
+#6430000
+0!
+03
+#6435000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b10 F
+b11 G
+b11 H
+b10 I
+b10 J
+0K
+1N
+b10111 i
+1p
+1q
+0r
+b1100100100011 u
+b1100100100011 v
+b1100100 w
+b11001000 y
+#6440000
+0!
+03
+#6445000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b10 I
+0K
+#6450000
+0!
+03
+#6455000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b10 I
+0K
+#6460000
+0!
+03
+#6465000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b10 I
+b11 J
+0K
+1N
+1S
+0T
+#6470000
+0!
+03
+#6475000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#6480000
+0!
+03
+#6485000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b11 I
+0K
+#6490000
+0!
+03
+#6495000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b11 I
+0K
+#6500000
+0!
+03
+#6505000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b11 I
+0K
+#6510000
+0!
+03
+#6515000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#6520000
+0!
+03
+#6525000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010010 D
+b101010010 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#6530000
+0!
+03
+#6535000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b10 F
+b11 G
+b11 I
+0K
+1r
+b1100110000111 v
+b1100100 w
+b1100100 y
+#6540000
+0!
+03
+#6545000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b1 F
+b11 G
+b11 I
+0K
+#6550000
+0!
+03
+#6555000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010010 D
+b0 F
+b11 G
+b11 I
+0K
+#6560000
+0!
+03
+#6565000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010010 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+0T
+#6570000
+0!
+03
+#6575000
+1!
+b1010010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#6580000
+0!
+03
+#6585000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b11 I
+0K
+#6590000
+0!
+03
+#6595000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b11 I
+0K
+#6600000
+0!
+03
+#6605000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b11 I
+0K
+#6610000
+0!
+03
+#6615000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+1S
+1T
+#6620000
+0!
+03
+#6625000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+0S
+0T
+#6630000
+0!
+03
+#6635000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b10 F
+b11 G
+b11 H
+b11 I
+b11 J
+0K
+1N
+b11000 i
+0p
+0q
+0r
+b1100111101011 u
+b1100111101011 v
+b1100100 w
+b11001000 y
+#6640000
+0!
+03
+#6645000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b11 I
+0K
+#6650000
+0!
+03
+#6655000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b11 I
+0K
+#6660000
+0!
+03
+#6665000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b11 I
+b100 J
+0K
+1N
+1S
+0T
+#6670000
+0!
+03
+#6675000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#6680000
+0!
+03
+#6685000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b100 I
+0K
+#6690000
+0!
+03
+#6695000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b100 I
+0K
+#6700000
+0!
+03
+#6705000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b100 I
+0K
+#6710000
+0!
+03
+#6715000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#6720000
+0!
+03
+#6725000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10100101 D
+b10100101 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#6730000
+0!
+03
+#6735000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b10 F
+b11 G
+b100 I
+0K
+1r
+b1101001001111 v
+b1100100 w
+b1100100 y
+#6740000
+0!
+03
+#6745000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b1 F
+b11 G
+b100 I
+0K
+#6750000
+0!
+03
+#6755000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100101 D
+b0 F
+b11 G
+b100 I
+0K
+#6760000
+0!
+03
+#6765000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100101 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+0T
+#6770000
+0!
+03
+#6775000
+1!
+b10100101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#6780000
+0!
+03
+#6785000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b100 I
+0K
+#6790000
+0!
+03
+#6795000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b100 I
+0K
+#6800000
+0!
+03
+#6805000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b100 I
+0K
+#6810000
+0!
+03
+#6815000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+1S
+1T
+#6820000
+0!
+03
+#6825000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+0S
+0T
+#6830000
+0!
+03
+#6835000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b10 F
+b11 G
+b11 H
+b100 I
+b100 J
+0K
+1N
+b11001 i
+1p
+1q
+0r
+b1101010110011 u
+b1101010110011 v
+b1100100 w
+b11001000 y
+#6840000
+0!
+03
+#6845000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b100 I
+0K
+#6850000
+0!
+03
+#6855000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b100 I
+0K
+#6860000
+0!
+03
+#6865000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b100 I
+b101 J
+0K
+1N
+1S
+0T
+#6870000
+0!
+03
+#6875000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#6880000
+0!
+03
+#6885000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b101 I
+0K
+#6890000
+0!
+03
+#6895000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b101 I
+0K
+#6900000
+0!
+03
+#6905000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b101 I
+0K
+#6910000
+0!
+03
+#6915000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#6920000
+0!
+03
+#6925000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101001010 D
+b101001010 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#6930000
+0!
+03
+#6935000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b10 F
+b11 G
+b101 I
+0K
+1r
+b1101100010111 v
+b1100100 w
+b1100100 y
+#6940000
+0!
+03
+#6945000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b1 F
+b11 G
+b101 I
+0K
+#6950000
+0!
+03
+#6955000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101001010 D
+b0 F
+b11 G
+b101 I
+0K
+#6960000
+0!
+03
+#6965000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101001010 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+0T
+#6970000
+0!
+03
+#6975000
+1!
+b1001010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#6980000
+0!
+03
+#6985000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b101 I
+0K
+#6990000
+0!
+03
+#6995000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b101 I
+0K
+#7000000
+0!
+03
+#7005000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b101 I
+0K
+#7010000
+0!
+03
+#7015000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+1S
+1T
+#7020000
+0!
+03
+#7025000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+0S
+0T
+#7030000
+0!
+03
+#7035000
+1!
+0%
+0&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b10 F
+b11 G
+b11 H
+b101 I
+b101 J
+0K
+1N
+b11010 i
+0p
+0q
+0r
+b1101101111011 u
+b1101101111011 v
+b1100100 w
+b11001000 y
+#7040000
+0!
+03
+#7045000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b101 I
+0K
+#7050000
+0!
+03
+#7055000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b101 I
+0K
+#7060000
+0!
+03
+#7065000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b101 I
+b110 J
+0K
+1N
+1S
+0T
+#7070000
+0!
+03
+#7075000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#7080000
+0!
+03
+#7085000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b110 I
+0K
+#7090000
+0!
+03
+#7095000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b110 I
+0K
+#7100000
+0!
+03
+#7105000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b110 I
+0K
+#7110000
+0!
+03
+#7115000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#7120000
+0!
+03
+#7125000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10010101 D
+b10010101 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#7130000
+0!
+03
+#7135000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b10 F
+b11 G
+b110 I
+0K
+1r
+b1101111011111 v
+b1100100 w
+b1100100 y
+#7140000
+0!
+03
+#7145000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b1 F
+b11 G
+b110 I
+0K
+#7150000
+0!
+03
+#7155000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10010101 D
+b0 F
+b11 G
+b110 I
+0K
+#7160000
+0!
+03
+#7165000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10010101 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+0T
+#7170000
+0!
+03
+#7175000
+1!
+b10010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#7180000
+0!
+03
+#7185000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b110 I
+0K
+#7190000
+0!
+03
+#7195000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#7200000
+0!
+03
+#7205000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#7210000
+0!
+03
+#7215000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+1S
+1T
+#7220000
+0!
+03
+#7225000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+0S
+0T
+#7230000
+0!
+03
+#7235000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b10 F
+b11 G
+b11 H
+b110 I
+b110 J
+0K
+1N
+b11011 i
+1p
+1q
+0r
+b1110001000011 u
+b1110001000011 v
+b1100100 w
+b11001000 y
+#7240000
+0!
+03
+#7245000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b110 I
+0K
+#7250000
+0!
+03
+#7255000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b110 I
+0K
+#7260000
+0!
+03
+#7265000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b110 I
+b111 J
+0K
+1N
+1S
+0T
+#7270000
+0!
+03
+#7275000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#7280000
+0!
+03
+#7285000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+#7290000
+0!
+03
+#7295000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#7300000
+0!
+03
+#7305000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#7310000
+0!
+03
+#7315000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#7320000
+0!
+03
+#7325000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b100101010 D
+b100101010 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#7330000
+0!
+03
+#7335000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b10 F
+b11 G
+b111 I
+0K
+1r
+b1110010100111 v
+b1100100 w
+b1100100 y
+#7340000
+0!
+03
+#7345000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b1 F
+b11 G
+b111 I
+0K
+#7350000
+0!
+03
+#7355000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100101010 D
+b0 F
+b11 G
+b111 I
+0K
+#7360000
+0!
+03
+#7365000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100101010 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+0T
+#7370000
+0!
+03
+#7375000
+1!
+b101010 +
+1-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#7380000
+0!
+03
+#7385000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+#7390000
+0!
+03
+#7395000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#7400000
+0!
+03
+#7405000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#7410000
+0!
+03
+#7415000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+1S
+1T
+#7420000
+0!
+03
+#7425000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b111 I
+b111 J
+0K
+1N
+0S
+0T
+#7430000
+0!
+03
+#7435000
+1!
+0%
+1&
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b111 I
+0K
+b11100 i
+zp
+0r
+b1110100001011 v
+b1100100 w
+b11001000 y
+#7440000
+0!
+03
+#7445000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b111 I
+0K
+#7450000
+0!
+03
+#7455000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b111 I
+0K
+#7460000
+0!
+03
+#7465000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b111 I
+b1000 J
+0K
+1N
+1S
+0T
+#7470000
+0!
+03
+#7475000
+1!
+0&
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+0q
+b1110100110011 u
+#7480000
+0!
+03
+#7485000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+#7490000
+0!
+03
+#7495000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#7500000
+0!
+03
+#7505000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#7510000
+0!
+03
+#7515000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#7520000
+0!
+03
+#7525000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b1010101 D
+b1010101 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#7530000
+0!
+03
+#7535000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b10 F
+b11 G
+b1000 I
+0K
+1r
+b1110101101111 v
+b1100100 w
+b111100 y
+#7540000
+0!
+03
+#7545000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b1 F
+b11 G
+b1000 I
+0K
+#7550000
+0!
+03
+#7555000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b1010101 D
+b0 F
+b11 G
+b1000 I
+0K
+#7560000
+0!
+03
+#7565000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b1010101 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+0T
+#7570000
+0!
+03
+#7575000
+1!
+b1010101 +
+0-
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#7580000
+0!
+03
+#7585000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+#7590000
+0!
+03
+#7595000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#7600000
+0!
+03
+#7605000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#7610000
+0!
+03
+#7615000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+1S
+1T
+#7620000
+0!
+03
+#7625000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+0N
+0S
+0T
+#7630000
+0!
+03
+#7635000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+0K
+b10100 i
+b1100011 l
+0p
+0r
+b1110111010011 v
+b1100100 w
+b10100000 y
+#7640000
+0!
+03
+#7645000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+0K
+#7650000
+0!
+03
+#7655000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+0K
+#7660000
+0!
+03
+#7665000
+1!
+13
+b1101 ;
+b1110 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+1L
+0N
+1S
+0T
+#7670000
+0!
+03
+#7675000
+1!
+13
+1:
+b1110 ;
+b1110 <
+0=
+0>
+0?
+0@
+0A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0N
+0S
+0T
+#7680000
+0!
+03
+#7685000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b11 G
+b1000 I
+1K
+#7690000
+0!
+03
+#7695000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b11 G
+b1000 I
+1K
+#7700000
+0!
+03
+#7705000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b11 G
+b1000 I
+1K
+#7710000
+0!
+03
+#7715000
+1!
+13
+b1110 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+1K
+0L
+1S
+0T
+#7720000
+0!
+03
+#7725000
+1!
+1(
+13
+0:
+b101 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b11 G
+b11 H
+b1000 I
+b1000 J
+0K
+1M
+0R
+0S
+0T
+#7730000
+0!
+03
+b1000010 O"
+1P"
+1Q"
+0R"
+1S"
+0T"
+#7735000
+1!
+13
+b101 ;
+0=
+0?
+b0 B
+b10101010 D
+b11 F
+b11 G
+b1000 I
+0K
+#7740000
+0!
+b0 $
+1(
+1)
+b1000010 *
+03
+15
+b0 6
+b1000010 8
+b1 <
+0>
+0@
+b0 C
+b10101010 E
+b0 H
+b1000 J
+1M
+#7745000
+1!
+0(
+13
+b1 ;
+b1 <
+0=
+0>
+0?
+1@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+0M
+0N
+1R
+0T
+#7750000
+0!
+b10 $
+03
+b10 6
+b1 <
+0>
+b0 C
+b10101010 E
+b0 H
+b1000 J
+#7755000
+1!
+1%
+13
+b1 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b0 G
+b1000 I
+0K
+1r
+b1111001001011 v
+b1111000 w
+b100011000 y
+#7760000
+0!
+0)
+bx *
+03
+05
+bx 8
+b1 <
+0>
+b0 C
+b10101010 E
+b0 H
+b1000 J
+#7765000
+1!
+13
+b1 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b0 G
+b1000 I
+0K
+#7770000
+0!
+03
+#7775000
+1!
+13
+b1 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b0 G
+b1000 I
+0K
+#7780000
+0!
+03
+#7785000
+1!
+13
+b1 ;
+b10 <
+0=
+0>
+1?
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+1S
+0T
+#7790000
+0!
+03
+#7795000
+1!
+13
+b10 ;
+b10 <
+0=
+0>
+1?
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+0S
+0T
+#7800000
+0!
+03
+#7805000
+1!
+13
+b10 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b0 G
+b1000 I
+0K
+#7810000
+0!
+03
+#7815000
+1!
+13
+b10 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b0 G
+b1000 I
+0K
+#7820000
+0!
+03
+#7825000
+1!
+13
+b10 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b0 G
+b1000 I
+0K
+#7830000
+0!
+03
+#7835000
+1!
+13
+b10 ;
+b11 <
+0=
+0>
+1?
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+1S
+0T
+#7840000
+0!
+03
+#7845000
+1!
+13
+b11 ;
+b11 <
+0=
+0>
+1?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+0S
+0T
+#7850000
+0!
+03
+#7855000
+1!
+0%
+0&
+13
+b11 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b0 G
+b1000 I
+0K
+b10101 i
+1p
+0r
+b1111010101111 v
+b1100100 w
+b101111100 y
+#7860000
+0!
+03
+#7865000
+1!
+13
+b11 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b0 G
+b1000 I
+0K
+#7870000
+0!
+03
+#7875000
+1!
+13
+b11 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b0 G
+b1000 I
+0K
+#7880000
+0!
+03
+#7885000
+1!
+13
+b11 ;
+b100 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+1S
+0T
+#7890000
+0!
+03
+#7895000
+1!
+13
+b100 ;
+b100 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+0S
+0T
+#7900000
+0!
+03
+#7905000
+1!
+13
+b100 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b0 G
+b1000 I
+0K
+#7910000
+0!
+03
+#7915000
+1!
+13
+b100 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b0 G
+b1000 I
+0K
+#7920000
+0!
+03
+#7925000
+1!
+13
+b100 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b0 G
+b1000 I
+0K
+#7930000
+0!
+03
+#7935000
+1!
+13
+b100 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+1S
+0T
+#7940000
+0!
+03
+#7945000
+1!
+1(
+13
+b101 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b0 G
+b0 H
+b1000 I
+b1000 J
+0K
+1M
+0R
+0S
+0T
+#7950000
+0!
+03
+b1010101 O"
+1P"
+0Q"
+0R"
+0S"
+0T"
+#7955000
+1!
+13
+b101 ;
+0=
+0?
+b0 B
+b10101010 D
+b11 F
+b0 G
+b1000 I
+0K
+#7960000
+0!
+1(
+1)
+b1010101 *
+03
+15
+b1010101 8
+b1010 <
+0>
+0@
+b0 C
+b10101010 E
+b10 H
+b0 J
+1M
+#7965000
+1!
+0(
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0M
+0N
+1R
+0T
+#7970000
+0!
+b10 $
+03
+#7975000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b10 F
+b10 G
+b0 I
+0K
+#7980000
+0!
+0)
+bx *
+03
+05
+bx 8
+b1010 <
+0>
+0@
+1A
+b0 C
+b10101010 E
+b10 H
+b0 J
+0N
+#7985000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b1 F
+b10 G
+b0 I
+0K
+#7990000
+0!
+03
+#7995000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101010 D
+b0 F
+b10 G
+b0 I
+0K
+#8000000
+0!
+03
+#8005000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#8010000
+0!
+03
+#8015000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101010 D
+b10101010 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#8020000
+0!
+03
+#8025000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b10 F
+b10 G
+b0 I
+0K
+1r
+b1111101011001 v
+b10101010 w
+b1000100110 y
+#8030000
+0!
+03
+#8035000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b1 F
+b10 G
+b0 I
+0K
+#8040000
+0!
+03
+#8045000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101010 D
+b0 F
+b10 G
+b0 I
+0K
+#8050000
+0!
+03
+#8055000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101010 D
+b101010100 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#8060000
+0!
+03
+#8065000
+1!
+b10101010 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#8070000
+0!
+03
+#8075000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b10 G
+b0 I
+0K
+#8080000
+0!
+03
+#8085000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b10 G
+b0 I
+0K
+#8090000
+0!
+03
+#8095000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b10 G
+b0 I
+0K
+#8100000
+0!
+03
+#8105000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+1T
+#8110000
+0!
+03
+#8115000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#8120000
+0!
+03
+#8125000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b10 F
+b10 G
+b0 I
+0K
+b10110 i
+0p
+0r
+b1111110111101 v
+b1100100 w
+b1010001010 y
+#8130000
+0!
+03
+#8135000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b10 G
+b0 I
+0K
+#8140000
+0!
+03
+#8145000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b10 G
+b0 I
+0K
+#8150000
+0!
+03
+#8155000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b1 J
+0K
+0N
+1S
+0T
+#8160000
+0!
+03
+#8165000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#8170000
+0!
+03
+#8175000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b10 F
+b10 G
+b1 I
+0K
+#8180000
+0!
+03
+#8185000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b1 F
+b10 G
+b1 I
+0K
+#8190000
+0!
+03
+#8195000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010100 D
+b0 F
+b10 G
+b1 I
+0K
+#8200000
+0!
+03
+#8205000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+0T
+#8210000
+0!
+03
+#8215000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010100 D
+b101010100 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#8220000
+0!
+03
+#8225000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b10 F
+b10 G
+b1 I
+0K
+1r
+b10000000100001 v
+b1100100 w
+b1011101110 y
+#8230000
+0!
+03
+#8235000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b1 F
+b10 G
+b1 I
+0K
+#8240000
+0!
+03
+#8245000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010100 D
+b0 F
+b10 G
+b1 I
+0K
+#8250000
+0!
+03
+#8255000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010100 D
+b10101000 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+0T
+#8260000
+0!
+03
+#8265000
+1!
+b1010100 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#8270000
+0!
+03
+#8275000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101000 D
+b10 F
+b10 G
+b1 I
+0K
+#8280000
+0!
+03
+#8285000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101000 D
+b1 F
+b10 G
+b1 I
+0K
+#8290000
+0!
+03
+#8295000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10101000 D
+b0 F
+b10 G
+b1 I
+0K
+#8300000
+0!
+03
+#8305000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+1S
+1T
+#8310000
+0!
+03
+#8315000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11 F
+b10 G
+b10 H
+b1 I
+b1 J
+0K
+0N
+0S
+0T
+#8320000
+0!
+03
+#8325000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101000 D
+b10 F
+b10 G
+b1 I
+0K
+b10111 i
+1p
+0r
+b10000010000101 v
+b1100100 w
+b1101010010 y
+#8330000
+0!
+03
+#8335000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101000 D
+b1 F
+b10 G
+b1 I
+0K
+#8340000
+0!
+03
+#8345000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10101000 D
+b0 F
+b10 G
+b1 I
+0K
+#8350000
+0!
+03
+#8355000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11111111111 F
+b10 G
+b10 H
+b1 I
+b10 J
+0K
+0N
+1S
+0T
+#8360000
+0!
+03
+#8365000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#8370000
+0!
+03
+#8375000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101000 D
+b10 F
+b10 G
+b10 I
+0K
+#8380000
+0!
+03
+#8385000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101000 D
+b1 F
+b10 G
+b10 I
+0K
+#8390000
+0!
+03
+#8395000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10101000 D
+b0 F
+b10 G
+b10 I
+0K
+#8400000
+0!
+03
+#8405000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+0T
+#8410000
+0!
+03
+#8415000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10101000 D
+b10101000 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#8420000
+0!
+03
+#8425000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101000 D
+b10 F
+b10 G
+b10 I
+0K
+1r
+b10000011101001 v
+b1100100 w
+b1110110110 y
+#8430000
+0!
+03
+#8435000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101000 D
+b1 F
+b10 G
+b10 I
+0K
+#8440000
+0!
+03
+#8445000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10101000 D
+b0 F
+b10 G
+b10 I
+0K
+#8450000
+0!
+03
+#8455000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10101000 D
+b101010000 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+0T
+#8460000
+0!
+03
+#8465000
+1!
+b10101000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#8470000
+0!
+03
+#8475000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010000 D
+b10 F
+b10 G
+b10 I
+0K
+#8480000
+0!
+03
+#8485000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010000 D
+b1 F
+b10 G
+b10 I
+0K
+#8490000
+0!
+03
+#8495000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101010000 D
+b0 F
+b10 G
+b10 I
+0K
+#8500000
+0!
+03
+#8505000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+1S
+1T
+#8510000
+0!
+03
+#8515000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11 F
+b10 G
+b10 H
+b10 I
+b10 J
+0K
+0N
+0S
+0T
+#8520000
+0!
+03
+#8525000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010000 D
+b10 F
+b10 G
+b10 I
+0K
+b11000 i
+0p
+0r
+b10000101001101 v
+b1100100 w
+b10000011010 y
+#8530000
+0!
+03
+#8535000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010000 D
+b1 F
+b10 G
+b10 I
+0K
+#8540000
+0!
+03
+#8545000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101010000 D
+b0 F
+b10 G
+b10 I
+0K
+#8550000
+0!
+03
+#8555000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11111111111 F
+b10 G
+b10 H
+b10 I
+b11 J
+0K
+0N
+1S
+0T
+#8560000
+0!
+03
+#8565000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#8570000
+0!
+03
+#8575000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010000 D
+b10 F
+b10 G
+b11 I
+0K
+#8580000
+0!
+03
+#8585000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010000 D
+b1 F
+b10 G
+b11 I
+0K
+#8590000
+0!
+03
+#8595000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101010000 D
+b0 F
+b10 G
+b11 I
+0K
+#8600000
+0!
+03
+#8605000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+0T
+#8610000
+0!
+03
+#8615000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101010000 D
+b101010000 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#8620000
+0!
+03
+#8625000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010000 D
+b10 F
+b10 G
+b11 I
+0K
+1r
+b10000110110001 v
+b1100100 w
+b10001111110 y
+#8630000
+0!
+03
+#8635000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010000 D
+b1 F
+b10 G
+b11 I
+0K
+#8640000
+0!
+03
+#8645000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101010000 D
+b0 F
+b10 G
+b11 I
+0K
+#8650000
+0!
+03
+#8655000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101010000 D
+b10100000 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+0T
+#8660000
+0!
+03
+#8665000
+1!
+b1010000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#8670000
+0!
+03
+#8675000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100000 D
+b10 F
+b10 G
+b11 I
+0K
+#8680000
+0!
+03
+#8685000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100000 D
+b1 F
+b10 G
+b11 I
+0K
+#8690000
+0!
+03
+#8695000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10100000 D
+b0 F
+b10 G
+b11 I
+0K
+#8700000
+0!
+03
+#8705000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+1S
+1T
+#8710000
+0!
+03
+#8715000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11 F
+b10 G
+b10 H
+b11 I
+b11 J
+0K
+0N
+0S
+0T
+#8720000
+0!
+03
+#8725000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100000 D
+b10 F
+b10 G
+b11 I
+0K
+b11001 i
+1p
+0r
+b10001000010101 v
+b1100100 w
+b10011100010 y
+#8730000
+0!
+03
+#8735000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100000 D
+b1 F
+b10 G
+b11 I
+0K
+#8740000
+0!
+03
+#8745000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10100000 D
+b0 F
+b10 G
+b11 I
+0K
+#8750000
+0!
+03
+#8755000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11111111111 F
+b10 G
+b10 H
+b11 I
+b100 J
+0K
+0N
+1S
+0T
+#8760000
+0!
+03
+#8765000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#8770000
+0!
+03
+#8775000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100000 D
+b10 F
+b10 G
+b100 I
+0K
+#8780000
+0!
+03
+#8785000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100000 D
+b1 F
+b10 G
+b100 I
+0K
+#8790000
+0!
+03
+#8795000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10100000 D
+b0 F
+b10 G
+b100 I
+0K
+#8800000
+0!
+03
+#8805000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+0T
+#8810000
+0!
+03
+#8815000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10100000 D
+b10100000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#8820000
+0!
+03
+#8825000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100000 D
+b10 F
+b10 G
+b100 I
+0K
+1r
+b10001001111001 v
+b1100100 w
+b10101000110 y
+#8830000
+0!
+03
+#8835000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100000 D
+b1 F
+b10 G
+b100 I
+0K
+#8840000
+0!
+03
+#8845000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10100000 D
+b0 F
+b10 G
+b100 I
+0K
+#8850000
+0!
+03
+#8855000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10100000 D
+b101000000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+0T
+#8860000
+0!
+03
+#8865000
+1!
+b10100000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#8870000
+0!
+03
+#8875000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101000000 D
+b10 F
+b10 G
+b100 I
+0K
+#8880000
+0!
+03
+#8885000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101000000 D
+b1 F
+b10 G
+b100 I
+0K
+#8890000
+0!
+03
+#8895000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b101000000 D
+b0 F
+b10 G
+b100 I
+0K
+#8900000
+0!
+03
+#8905000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+1S
+1T
+#8910000
+0!
+03
+#8915000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11 F
+b10 G
+b10 H
+b100 I
+b100 J
+0K
+0N
+0S
+0T
+#8920000
+0!
+03
+#8925000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b101000000 D
+b10 F
+b10 G
+b100 I
+0K
+b11010 i
+0p
+0r
+b10001011011101 v
+b1100100 w
+b10110101010 y
+#8930000
+0!
+03
+#8935000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101000000 D
+b1 F
+b10 G
+b100 I
+0K
+#8940000
+0!
+03
+#8945000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b101000000 D
+b0 F
+b10 G
+b100 I
+0K
+#8950000
+0!
+03
+#8955000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11111111111 F
+b10 G
+b10 H
+b100 I
+b101 J
+0K
+0N
+1S
+0T
+#8960000
+0!
+03
+#8965000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#8970000
+0!
+03
+#8975000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101000000 D
+b10 F
+b10 G
+b101 I
+0K
+#8980000
+0!
+03
+#8985000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101000000 D
+b1 F
+b10 G
+b101 I
+0K
+#8990000
+0!
+03
+#8995000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b101000000 D
+b0 F
+b10 G
+b101 I
+0K
+#9000000
+0!
+03
+#9005000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+0T
+#9010000
+0!
+03
+#9015000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b101000000 D
+b101000000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#9020000
+0!
+03
+#9025000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b101000000 D
+b10 F
+b10 G
+b101 I
+0K
+1r
+b10001101000001 v
+b1100100 w
+b11000001110 y
+#9030000
+0!
+03
+#9035000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101000000 D
+b1 F
+b10 G
+b101 I
+0K
+#9040000
+0!
+03
+#9045000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b101000000 D
+b0 F
+b10 G
+b101 I
+0K
+#9050000
+0!
+03
+#9055000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b101000000 D
+b10000000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+0T
+#9060000
+0!
+03
+#9065000
+1!
+b1000000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#9070000
+0!
+03
+#9075000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10000000 D
+b10 F
+b10 G
+b101 I
+0K
+#9080000
+0!
+03
+#9085000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10000000 D
+b1 F
+b10 G
+b101 I
+0K
+#9090000
+0!
+03
+#9095000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b10000000 D
+b0 F
+b10 G
+b101 I
+0K
+#9100000
+0!
+03
+#9105000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+1S
+1T
+#9110000
+0!
+03
+#9115000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11 F
+b10 G
+b10 H
+b101 I
+b101 J
+0K
+0N
+0S
+0T
+#9120000
+0!
+03
+#9125000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b10000000 D
+b10 F
+b10 G
+b101 I
+0K
+b11011 i
+1p
+0r
+b10001110100101 v
+b1100100 w
+b11001110010 y
+#9130000
+0!
+03
+#9135000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10000000 D
+b1 F
+b10 G
+b101 I
+0K
+#9140000
+0!
+03
+#9145000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b10000000 D
+b0 F
+b10 G
+b101 I
+0K
+#9150000
+0!
+03
+#9155000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11111111111 F
+b10 G
+b10 H
+b101 I
+b110 J
+0K
+0N
+1S
+0T
+#9160000
+0!
+03
+#9165000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#9170000
+0!
+03
+#9175000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10000000 D
+b10 F
+b10 G
+b110 I
+0K
+#9180000
+0!
+03
+#9185000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10000000 D
+b1 F
+b10 G
+b110 I
+0K
+#9190000
+0!
+03
+#9195000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b10000000 D
+b0 F
+b10 G
+b110 I
+0K
+#9200000
+0!
+03
+#9205000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+0T
+#9210000
+0!
+03
+#9215000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b10000000 D
+b10000000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#9220000
+0!
+03
+#9225000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b10000000 D
+b10 F
+b10 G
+b110 I
+0K
+1r
+b10010000001001 v
+b1100100 w
+b11011010110 y
+#9230000
+0!
+03
+#9235000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10000000 D
+b1 F
+b10 G
+b110 I
+0K
+#9240000
+0!
+03
+#9245000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b10000000 D
+b0 F
+b10 G
+b110 I
+0K
+#9250000
+0!
+03
+#9255000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b10000000 D
+b100000000 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+0T
+#9260000
+0!
+03
+#9265000
+1!
+b10000000 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#9270000
+0!
+03
+#9275000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100000000 D
+b10 F
+b10 G
+b110 I
+0K
+#9280000
+0!
+03
+#9285000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100000000 D
+b1 F
+b10 G
+b110 I
+0K
+#9290000
+0!
+03
+#9295000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b100000000 D
+b0 F
+b10 G
+b110 I
+0K
+#9300000
+0!
+03
+#9305000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+1S
+1T
+#9310000
+0!
+03
+#9315000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11 F
+b10 G
+b10 H
+b110 I
+b110 J
+0K
+0N
+0S
+0T
+#9320000
+0!
+03
+#9325000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b100000000 D
+b10 F
+b10 G
+b110 I
+0K
+b11100 i
+zp
+0r
+b10010001101101 v
+b1100100 w
+b11100111010 y
+#9330000
+0!
+03
+#9335000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100000000 D
+b1 F
+b10 G
+b110 I
+0K
+#9340000
+0!
+03
+#9345000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b100000000 D
+b0 F
+b10 G
+b110 I
+0K
+#9350000
+0!
+03
+#9355000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11111111111 F
+b10 G
+b10 H
+b110 I
+b111 J
+0K
+0N
+1S
+0T
+#9360000
+0!
+03
+#9365000
+1!
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#9370000
+0!
+03
+#9375000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100000000 D
+b10 F
+b10 G
+b111 I
+0K
+#9380000
+0!
+03
+#9385000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100000000 D
+b1 F
+b10 G
+b111 I
+0K
+#9390000
+0!
+03
+#9395000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b100000000 D
+b0 F
+b10 G
+b111 I
+0K
+#9400000
+0!
+03
+#9405000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+0T
+#9410000
+0!
+03
+#9415000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b100000000 D
+b100000000 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#9420000
+0!
+03
+#9425000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b100000000 D
+b10 F
+b10 G
+b111 I
+0K
+1r
+b10010011010001 v
+b1100100 w
+b11110011110 y
+#9430000
+0!
+03
+#9435000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100000000 D
+b1 F
+b10 G
+b111 I
+0K
+#9440000
+0!
+03
+#9445000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b100000000 D
+b0 F
+b10 G
+b111 I
+0K
+#9450000
+0!
+03
+#9455000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b100000000 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+0T
+#9460000
+0!
+03
+#9465000
+1!
+b0 +
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#9470000
+0!
+03
+#9475000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b10 F
+b10 G
+b111 I
+0K
+#9480000
+0!
+03
+#9485000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b1 F
+b10 G
+b111 I
+0K
+#9490000
+0!
+03
+#9495000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b0 F
+b10 G
+b111 I
+0K
+#9500000
+0!
+03
+#9505000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+1S
+1T
+#9510000
+0!
+03
+#9515000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b111 I
+b111 J
+0K
+0N
+0S
+0T
+#9520000
+0!
+03
+#9525000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b10 F
+b10 G
+b111 I
+0K
+b10100 i
+b1101 l
+0p
+0r
+b10010100110101 v
+b1100100 w
+b100000000010 y
+#9530000
+0!
+03
+#9535000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b1 F
+b10 G
+b111 I
+0K
+#9540000
+0!
+03
+#9545000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b0 F
+b10 G
+b111 I
+0K
+#9550000
+0!
+03
+#9555000
+1!
+13
+b1101 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b111 I
+b1000 J
+0K
+0N
+1S
+0T
+#9560000
+0!
+03
+#9565000
+1!
+0&
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#9570000
+0!
+03
+#9575000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b10 F
+b10 G
+b1000 I
+0K
+#9580000
+0!
+03
+#9585000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b1 F
+b10 G
+b1000 I
+0K
+#9590000
+0!
+03
+#9595000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b0 F
+b10 G
+b1000 I
+0K
+#9600000
+0!
+03
+#9605000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+0T
+#9610000
+0!
+03
+#9615000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#9620000
+0!
+03
+#9625000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b10 F
+b10 G
+b1000 I
+0K
+1r
+b10010110011001 v
+b1100100 w
+b100001100110 y
+#9630000
+0!
+03
+#9635000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b1 F
+b10 G
+b1000 I
+0K
+#9640000
+0!
+03
+#9645000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b0 F
+b10 G
+b1000 I
+0K
+#9650000
+0!
+03
+#9655000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+0T
+#9660000
+0!
+03
+#9665000
+1!
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#9670000
+0!
+03
+#9675000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b10 F
+b10 G
+b1000 I
+0K
+#9680000
+0!
+03
+#9685000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b1 F
+b10 G
+b1000 I
+0K
+#9690000
+0!
+03
+#9695000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b0 F
+b10 G
+b1000 I
+0K
+#9700000
+0!
+03
+#9705000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+1S
+1T
+#9710000
+0!
+03
+#9715000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+0S
+0T
+#9720000
+0!
+03
+#9725000
+1!
+0%
+1&
+13
+b1101 ;
+b1101 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b10 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1N
+b10101 i
+1p
+1q
+0r
+b10010111111101 u
+b10010111111101 v
+b1100100 w
+b100011001010 y
+#9730000
+0!
+03
+#9735000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b1 F
+b10 G
+b1000 I
+0K
+#9740000
+0!
+03
+#9745000
+1!
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b0 F
+b10 G
+b1000 I
+0K
+#9750000
+0!
+03
+#9755000
+1!
+13
+b1101 ;
+b1110 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1L
+1N
+1S
+0T
+#9760000
+0!
+03
+#9765000
+1!
+0&
+13
+1:
+b1110 ;
+b1110 <
+0=
+0>
+0?
+0@
+0A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+1K
+0N
+0S
+0T
+0q
+b10011000100101 u
+#9770000
+0!
+03
+#9775000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b0 D
+b10 F
+b10 G
+b1000 I
+1K
+#9780000
+0!
+03
+#9785000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b0 D
+b1 F
+b10 G
+b1000 I
+1K
+#9790000
+0!
+03
+#9795000
+1!
+13
+b1110 ;
+0=
+0?
+b0 B
+b0 D
+b0 F
+b10 G
+b1000 I
+1K
+#9800000
+0!
+03
+#9805000
+1!
+13
+b1110 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+1K
+0L
+1S
+0T
+#9810000
+0!
+03
+#9815000
+1!
+1(
+13
+0:
+b101 ;
+b101 <
+0=
+0>
+0?
+0@
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b1000 I
+b1000 J
+0K
+1M
+0R
+0S
+0T
+#9820000
+0!
+03
+b10101010 O"
+1P"
+0Q"
+0R"
+0S"
+0T"
+#9825000
+1!
+13
+b101 ;
+0=
+0?
+b0 B
+b0 D
+b11 F
+b10 G
+b1000 I
+0K
+#9830000
+0!
+1(
+1)
+b10101010 *
+03
+15
+b10101010 8
+b1010 <
+0>
+0@
+b0 C
+b0 E
+b10 H
+b0 J
+1M
+#9835000
+1!
+0(
+13
+b1010 ;
+b1010 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0M
+0N
+1R
+0T
+#9840000
+0!
+b10 $
+03
+#9845000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+#9850000
+0!
+0)
+bx *
+03
+05
+bx 8
+b1010 <
+0>
+0@
+1A
+b0 C
+b0 E
+b10 H
+b0 J
+0N
+#9855000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#9860000
+0!
+03
+#9865000
+1!
+13
+b1010 ;
+0=
+0?
+b0 B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#9870000
+0!
+03
+#9875000
+1!
+13
+b1010 ;
+b1011 <
+0=
+0>
+0?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#9880000
+0!
+03
+#9885000
+1!
+13
+b1011 ;
+b1011 <
+0=
+0>
+0?
+1@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#9890000
+0!
+03
+#9895000
+1!
+1%
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+1r
+b10011010100111 v
+b10101010 w
+b10000010 y
+#9900000
+0!
+03
+#9905000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#9910000
+0!
+03
+#9915000
+1!
+13
+b1011 ;
+0=
+1?
+b0 B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#9920000
+0!
+03
+#9925000
+1!
+13
+b1011 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+0T
+#9930000
+0!
+03
+#9935000
+1!
+13
+b1100 ;
+b1100 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#9940000
+0!
+03
+#9945000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+#9950000
+0!
+03
+#9955000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b1 F
+b10 G
+b0 I
+0K
+#9960000
+0!
+03
+#9965000
+1!
+13
+b1100 ;
+0=
+1?
+b0 B
+b0 D
+b0 F
+b10 G
+b0 I
+0K
+#9970000
+0!
+03
+#9975000
+1!
+13
+b1100 ;
+b1101 <
+0=
+0>
+1?
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11111111111 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+1S
+1T
+#9980000
+0!
+03
+#9985000
+1!
+13
+b1101 ;
+b1101 <
+0=
+0>
+1?
+0@
+1A
+b0 B
+b0 C
+b0 D
+b0 E
+b11 F
+b10 G
+b10 H
+b0 I
+b0 J
+0K
+0N
+0S
+0T
+#9990000
+0!
+03
+#9995000
+1!
+0%
+0&
+13
+b1101 ;
+0=
+0?
+b0 B
+b0 D
+b10 F
+b10 G
+b0 I
+0K
+b10110 i
+0p
+0r
+b10011100001011 v
+b1100100 w
+b11100110 y
+#10000000
+0!
+03

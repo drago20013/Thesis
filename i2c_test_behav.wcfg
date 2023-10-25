@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="I2C_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="I2C_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="3544000001fs"></ZoomEndTime>
+      <Cursor1Time time="2089200000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/I2C_tb/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/CLR" type="logic">
+      <obj_property name="ElementShortName">CLR</obj_property>
+      <obj_property name="ObjectShortName">CLR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/CE" type="logic">
+      <obj_property name="ElementShortName">CE</obj_property>
+      <obj_property name="ObjectShortName">CE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/SDA" type="logic">
+      <obj_property name="ElementShortName">SDA</obj_property>
+      <obj_property name="ObjectShortName">SDA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/SCL" type="logic">
+      <obj_property name="ElementShortName">SCL</obj_property>
+      <obj_property name="ObjectShortName">SCL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/RDY" type="logic">
+      <obj_property name="ElementShortName">RDY</obj_property>
+      <obj_property name="ObjectShortName">RDY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/DI" type="array">
+      <obj_property name="ElementShortName">DI[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DI[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/DQ" type="array">
+      <obj_property name="ElementShortName">DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/ACK_I" type="logic">
+      <obj_property name="ElementShortName">ACK_I</obj_property>
+      <obj_property name="ObjectShortName">ACK_I</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/ACK_Q" type="logic">
+      <obj_property name="ElementShortName">ACK_Q</obj_property>
+      <obj_property name="ObjectShortName">ACK_Q</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/UUT/ack" type="logic">
+      <obj_property name="ElementShortName">ack</obj_property>
+      <obj_property name="ObjectShortName">ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/UUT/nack" type="logic">
+      <obj_property name="ElementShortName">nack</obj_property>
+      <obj_property name="ObjectShortName">nack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb/XC_RQ" type="logic">
+      <obj_property name="ElementShortName">XC_RQ</obj_property>
+      <obj_property name="ObjectShortName">XC_RQ</obj_property>
+   </wvobject>
+</wave_config>

@@ -29,7 +29,7 @@ wire activate, write_divider;
 wire [7:0] data_out;
 wire ready, ack;
 
-i2c_controller_master i2c_controller(
+i2c_controller_master_v2 i2c_controller(
     .clk(clk),
     .reset_n(reset_n),
     .activate(activate),

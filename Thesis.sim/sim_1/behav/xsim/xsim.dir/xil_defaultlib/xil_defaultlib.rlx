@@ -2,7 +2,12 @@
 2018.1
 Apr  4 2018
 19:30:32
-C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_controller_master.v,1696872854,verilog,,,,i2c_controller_master,,,,,,,,
-C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_master_test.v,1696872854,verilog,,,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_module.v,i2c_test,,,,,,,,
-C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_module.v,1696872854,verilog,,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_master_test.v,C:/Users/Mike/Downloads/Thesis-master/Thesis-master/i2c_controller_master.v,i2c_module,,,,,,,,
+C:/Users/Mike/Downloads/i2c_core/i2c_ctrl.v,1697717670,verilog,,C:/Users/Mike/Downloads/i2c_core/i2c_tb.v,,I2C_PHY,,,,,,,,
 C:/Users/Mike/Thesis/Thesis.sim/sim_1/behav/xsim/glbl.v,1522801934,verilog,,,,glbl,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sim_1/imports/Thesis-master/i2c_master_test.v,1696875543,verilog,,,,i2c_test,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sim_1/imports/i2c_core/i2c_tb.v,1698092741,verilog,,,,I2C_tb,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/Thesis-master/i2c_controller_master.v,1696872854,verilog,,C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/Thesis-master/i2c_controller_master_version2.v,,i2c_controller_master,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/Thesis-master/i2c_controller_master_version2.v,1698091136,verilog,,C:/Users/Mike/Thesis/Thesis.srcs/sim_1/imports/i2c_core/i2c_tb.v,,i2c_controller_master_v2,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/Thesis-master/i2c_module.v,1698078076,verilog,,C:/Users/Mike/Thesis/Thesis.srcs/sim_1/imports/Thesis-master/i2c_master_test.v,,i2c_module,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/i2c_core/i2c_bhv.v,1676441034,verilog,,C:/Users/Mike/Thesis/Thesis.srcs/sources_1/imports/Thesis-master/i2c_controller_master_version2.v,,I2C_SLV_BHV,,,,,,,,
+C:/Users/Mike/Thesis/Thesis.srcs/sources_1/new/i2c_module2.v,1696967092,verilog,,,,i2c_module2,,,,,,,,
