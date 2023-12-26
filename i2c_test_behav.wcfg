@@ -3,73 +3,280 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="I2C_tb_behav.wdb" id="1">
+      <db_ref path="I2C_tb3_behav.wdb" id="1">
          <top_modules>
-            <top_module name="I2C_tb" />
+            <top_module name="I2C_tb3" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="3544000001fs"></ZoomEndTime>
-      <Cursor1Time time="2089200000fs"></Cursor1Time>
+      <ZoomStartTime time="665500000fs"></ZoomStartTime>
+      <ZoomEndTime time="1435000001fs"></ZoomEndTime>
+      <Cursor1Time time="1008000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="98"></ValueColumnWidth>
+      <NameColumnWidth column_width="159"></NameColumnWidth>
+      <ValueColumnWidth column_width="165"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
-   <wvobject fp_name="/I2C_tb/CLK" type="logic">
+   <WVObjectSize size="64" />
+   <wvobject fp_name="/I2C_tb3/TV80/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/CLR" type="logic">
-      <obj_property name="ElementShortName">CLR</obj_property>
-      <obj_property name="ObjectShortName">CLR</obj_property>
+   <wvobject fp_name="/I2C_tb3/TV80/nCLR" type="logic">
+      <obj_property name="ElementShortName">nCLR</obj_property>
+      <obj_property name="ObjectShortName">nCLR</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/CE" type="logic">
-      <obj_property name="ElementShortName">CE</obj_property>
-      <obj_property name="ObjectShortName">CE</obj_property>
+   <wvobject fp_name="/I2C_tb3/TV80/SW" type="array">
+      <obj_property name="ElementShortName">SW[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SW[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/SDA" type="logic">
+   <wvobject fp_name="/I2C_tb3/TV80/PB" type="array">
+      <obj_property name="ElementShortName">PB[3:0]</obj_property>
+      <obj_property name="ObjectShortName">PB[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/LED" type="array">
+      <obj_property name="ElementShortName">LED[3:0]</obj_property>
+      <obj_property name="ObjectShortName">LED[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/LED_RGB_0" type="array">
+      <obj_property name="ElementShortName">LED_RGB_0[2:0]</obj_property>
+      <obj_property name="ObjectShortName">LED_RGB_0[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/LED_RGB_1" type="array">
+      <obj_property name="ElementShortName">LED_RGB_1[2:0]</obj_property>
+      <obj_property name="ObjectShortName">LED_RGB_1[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/SDA" type="logic">
       <obj_property name="ElementShortName">SDA</obj_property>
       <obj_property name="ObjectShortName">SDA</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/SCL" type="logic">
+   <wvobject fp_name="/I2C_tb3/TV80/SCL" type="logic">
       <obj_property name="ElementShortName">SCL</obj_property>
       <obj_property name="ObjectShortName">SCL</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/RDY" type="logic">
-      <obj_property name="ElementShortName">RDY</obj_property>
-      <obj_property name="ObjectShortName">RDY</obj_property>
+   <wvobject fp_name="/I2C_tb3/TV80/I2C_DQ1" type="array">
+      <obj_property name="ElementShortName">I2C_DQ1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">I2C_DQ1[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/DI" type="array">
+   <wvobject fp_name="/I2C_tb3/TV80/I2C_DQ2" type="array">
+      <obj_property name="ElementShortName">I2C_DQ2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">I2C_DQ2[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/ADDR" type="array">
+      <obj_property name="ElementShortName">ADDR[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDR[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/DI" type="array">
       <obj_property name="ElementShortName">DI[7:0]</obj_property>
       <obj_property name="ObjectShortName">DI[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/DQ" type="array">
+   <wvobject fp_name="/I2C_tb3/TV80/DO" type="array">
+      <obj_property name="ElementShortName">DO[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DO[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/ROM_0_DQ" type="array">
+      <obj_property name="ElementShortName">ROM_0_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ROM_0_DQ[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nRD" type="logic">
+      <obj_property name="ElementShortName">nRD</obj_property>
+      <obj_property name="ObjectShortName">nRD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nWR" type="logic">
+      <obj_property name="ElementShortName">nWR</obj_property>
+      <obj_property name="ObjectShortName">nWR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nMREQ" type="logic">
+      <obj_property name="ElementShortName">nMREQ</obj_property>
+      <obj_property name="ObjectShortName">nMREQ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nIORQ" type="logic">
+      <obj_property name="ElementShortName">nIORQ</obj_property>
+      <obj_property name="ObjectShortName">nIORQ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nWAIT" type="logic">
+      <obj_property name="ElementShortName">nWAIT</obj_property>
+      <obj_property name="ObjectShortName">nWAIT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nWAIT1" type="logic">
+      <obj_property name="ElementShortName">nWAIT1</obj_property>
+      <obj_property name="ObjectShortName">nWAIT1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nWAIT2" type="logic">
+      <obj_property name="ElementShortName">nWAIT2</obj_property>
+      <obj_property name="ObjectShortName">nWAIT2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nM1" type="logic">
+      <obj_property name="ElementShortName">nM1</obj_property>
+      <obj_property name="ObjectShortName">nM1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/nINT" type="logic">
+      <obj_property name="ElementShortName">nINT</obj_property>
+      <obj_property name="ObjectShortName">nINT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/TS" type="array">
+      <obj_property name="ElementShortName">TS[2:0]</obj_property>
+      <obj_property name="ObjectShortName">TS[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/RAM_0_DQ" type="array">
+      <obj_property name="ElementShortName">RAM_0_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">RAM_0_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P0_DQ" type="array">
+      <obj_property name="ElementShortName">P0_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P0_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P1_DQ" type="array">
+      <obj_property name="ElementShortName">P1_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P1_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P2_DQ" type="array">
+      <obj_property name="ElementShortName">P2_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P2_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P3_DQ" type="array">
+      <obj_property name="ElementShortName">P3_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P3_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P4_DQ" type="array">
+      <obj_property name="ElementShortName">P4_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">P4_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/RAM_0_WE" type="logic">
+      <obj_property name="ElementShortName">RAM_0_WE</obj_property>
+      <obj_property name="ObjectShortName">RAM_0_WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P0_RD" type="logic">
+      <obj_property name="ElementShortName">P0_RD</obj_property>
+      <obj_property name="ObjectShortName">P0_RD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P1_RD" type="logic">
+      <obj_property name="ElementShortName">P1_RD</obj_property>
+      <obj_property name="ObjectShortName">P1_RD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/I2C_SEL22" type="logic">
+      <obj_property name="ElementShortName">I2C_SEL22</obj_property>
+      <obj_property name="ObjectShortName">I2C_SEL22</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/I2C_SEL20" type="logic">
+      <obj_property name="ElementShortName">I2C_SEL20</obj_property>
+      <obj_property name="ObjectShortName">I2C_SEL20</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P2_WR" type="logic">
+      <obj_property name="ElementShortName">P2_WR</obj_property>
+      <obj_property name="ObjectShortName">P2_WR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P3_WR" type="logic">
+      <obj_property name="ElementShortName">P3_WR</obj_property>
+      <obj_property name="ObjectShortName">P3_WR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/P4_WR" type="logic">
+      <obj_property name="ElementShortName">P4_WR</obj_property>
+      <obj_property name="ObjectShortName">P4_WR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/ADDR" type="array">
+      <obj_property name="ElementShortName">ADDR[6:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDR[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/nCLR" type="logic">
+      <obj_property name="ElementShortName">nCLR</obj_property>
+      <obj_property name="ObjectShortName">nCLR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/EN" type="logic">
+      <obj_property name="ElementShortName">EN</obj_property>
+      <obj_property name="ObjectShortName">EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/nRD" type="logic">
+      <obj_property name="ElementShortName">nRD</obj_property>
+      <obj_property name="ObjectShortName">nRD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/nWR" type="logic">
+      <obj_property name="ElementShortName">nWR</obj_property>
+      <obj_property name="ObjectShortName">nWR</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/DI" type="array">
+      <obj_property name="ElementShortName">DI[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DI[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/DQ" type="array">
       <obj_property name="ElementShortName">DQ[7:0]</obj_property>
       <obj_property name="ObjectShortName">DQ[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/ACK_I" type="logic">
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/SDA" type="logic">
+      <obj_property name="ElementShortName">SDA</obj_property>
+      <obj_property name="ObjectShortName">SDA</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/SCL" type="logic">
+      <obj_property name="ElementShortName">SCL</obj_property>
+      <obj_property name="ObjectShortName">SCL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/nWAIT" type="logic">
+      <obj_property name="ElementShortName">nWAIT</obj_property>
+      <obj_property name="ObjectShortName">nWAIT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/CMD" type="array">
+      <obj_property name="ElementShortName">CMD[1:0]</obj_property>
+      <obj_property name="ObjectShortName">CMD[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/I2C_DI" type="array">
+      <obj_property name="ElementShortName">I2C_DI[7:0]</obj_property>
+      <obj_property name="ObjectShortName">I2C_DI[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/I2C_DQ" type="array">
+      <obj_property name="ElementShortName">I2C_DQ[7:0]</obj_property>
+      <obj_property name="ObjectShortName">I2C_DQ[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/TRANSACTION_STATE" type="array">
+      <obj_property name="ElementShortName">TRANSACTION_STATE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">TRANSACTION_STATE[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/change_state" type="logic">
+      <obj_property name="ElementShortName">change_state</obj_property>
+      <obj_property name="ObjectShortName">change_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/ff" type="logic">
+      <obj_property name="ElementShortName">ff</obj_property>
+      <obj_property name="ObjectShortName">ff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/ff_delayed" type="logic">
+      <obj_property name="ElementShortName">ff_delayed</obj_property>
+      <obj_property name="ObjectShortName">ff_delayed</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/RDY" type="logic">
+      <obj_property name="ElementShortName">RDY</obj_property>
+      <obj_property name="ObjectShortName">RDY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/XC_RQ" type="logic">
+      <obj_property name="ElementShortName">XC_RQ</obj_property>
+      <obj_property name="ObjectShortName">XC_RQ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/ACK_I" type="logic">
       <obj_property name="ElementShortName">ACK_I</obj_property>
       <obj_property name="ObjectShortName">ACK_I</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/ACK_Q" type="logic">
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/DO_READ" type="logic">
+      <obj_property name="ElementShortName">DO_READ</obj_property>
+      <obj_property name="ObjectShortName">DO_READ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/DO_WRITE" type="logic">
+      <obj_property name="ElementShortName">DO_WRITE</obj_property>
+      <obj_property name="ObjectShortName">DO_WRITE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/ACK_Q" type="logic">
       <obj_property name="ElementShortName">ACK_Q</obj_property>
       <obj_property name="ObjectShortName">ACK_Q</obj_property>
    </wvobject>
-   <wvobject fp_name="/I2C_tb/UUT/ack" type="logic">
-      <obj_property name="ElementShortName">ack</obj_property>
-      <obj_property name="ObjectShortName">ack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/I2C_tb/UUT/nack" type="logic">
-      <obj_property name="ElementShortName">nack</obj_property>
-      <obj_property name="ObjectShortName">nack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/I2C_tb/XC_RQ" type="logic">
-      <obj_property name="ElementShortName">XC_RQ</obj_property>
-      <obj_property name="ObjectShortName">XC_RQ</obj_property>
+   <wvobject fp_name="/I2C_tb3/TV80/PCF_20/BYTE_DONE" type="logic">
+      <obj_property name="ElementShortName">BYTE_DONE</obj_property>
+      <obj_property name="ObjectShortName">BYTE_DONE</obj_property>
    </wvobject>
 </wave_config>

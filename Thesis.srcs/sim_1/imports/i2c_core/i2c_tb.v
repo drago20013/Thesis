@@ -1,23 +1,3 @@
-//-----------------------------------------------------------------------------
-//
-// Title       : VL53L_I2C_tb
-// Design      : axi_head
-// Author      : Adam
-// Company     : AME
-//
-//-----------------------------------------------------------------------------
-//
-// File        : VL53L_I2C_TB.v
-// Generated   : Sat Jan  7 12:26:53 2023
-// From        : F:\Dyplomy\axi_head\axi_head\src\TestBench\VL53L_I2C_TB_settings.txt
-// By          : tb_verilog.pl ver. ver 1.2s
-//
-//-----------------------------------------------------------------------------
-//
-// Description :
-//
-//-----------------------------------------------------------------------------
-
 `timescale 1ns / 100ps
 
 module I2C_tb;
@@ -25,8 +5,7 @@ module I2C_tb;
 //Internal signals declarations:
 reg CLK;
 reg CLR;
-reg CE;
-reg [2:0] CMD;
+reg [1:0] CMD;
 tri SCL;
 tri SDA;
 reg SDA_DRV;
@@ -40,12 +19,11 @@ wire [7:0] DQ;
 reg ACK_I;
 wire ACK_Q;
 
-localparam [2:0]
+localparam [1:0]
     COMMAND_START = 0,
     COMMAND_STOP = 1,
     COMMAND_WR = 2,
-    COMMAND_RD = 3,
-    COMMAND_REPEAT_START = 4;
+    COMMAND_RD = 3;
 
 // Unit Under Test port map
 i2c_controller_master_v2 UUT (
@@ -74,20 +52,21 @@ initial begin
 	DI = 8'hxx;
 	ACK_I = 1'bx;
 	XC_RQ = 1'b0;
-	CMD = 3'bx;
+	CMD = 2'bx;
 	repeat(3) @(negedge CLK);
 	I2C_BHV.LIST_DEV();
 	CLR = 1'b0;
 	repeat(3) @(negedge CLK);
-	I2C_BHV.DATA_RD = 8'h55;
+	I2C_BHV.DATA_RD = 8'h55; //Set data to be sent from slave, master RD operation
 	/* Read Data from -> 0x21 */
-	I2C_DO(8'h43, 1'b1, 1'b0, 1'b0, 1'b1, 1'b0); /* address stage TX_ACK = 1 - allow ACK from slave */
-	I2C_DO(8'hFF, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1); /* read data - Transmit all FF confirm - ACK - 0*/
-	I2C_DO(8'hFF, 1'b1, 1'b0, 1'b0, 1'b0, 1'b1); /* read data - Transmit all FF confirm - ACK - 1 (NAK)*/
-	/* Write Data to -> 0x21 using repreated start */
-	I2C_DO(8'h42, 1'b1, 1'b1, 1'b0, 1'b1, 1'b0); /* address stage TX_ACK = 1, write with repeated start */
-	I2C_DO(8'h55, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0);
-	I2C_DO(8'hAA, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0);
+	I2C_DO(8'h43, 1'b1, 1'b0, 1'b1, 1'b0, 1'b0); /* address stage TX_ACK = 1 - allow ACK from slave */
+	I2C_DO(8'hFF, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0); /* read data - Transmit all FF confirm - ACK - 0*/
+	I2C_DO(8'hFF, 1'b0, 1'b0, 1'b0, 1'b1, 1'b0); /* read data - Transmit all FF confirm - ACK - 0*/
+	I2C_DO(8'hFF, 1'b1, 1'b0, 1'b0, 1'b1, 1'b0); /* read data - Transmit all FF confirm - ACK - 1 (NAK)*/
+//	/* Write Data to -> 0x21 using repreated start */
+	I2C_DO(8'h42, 1'b1, 1'b0, 1'b1, 1'b0, 1'b0); /* address stage TX_ACK = 1 - allow ACK from slave. Write with repeted start */
+	I2C_DO(8'h55, 1'b1, 1'b0, 1'b0, 1'b0, 1'b1);
+	I2C_DO(8'hAA, 1'b1, 1'b1, 1'b0, 1'b0, 1'b1);
 	repeat(50) @(negedge CLK);
 	$finish;
 end
@@ -105,46 +84,74 @@ end
 task I2C_DO;
 input [7:0] DATA; //data or address + r/w
 input ACK;
-input REP_START;
 input DO_STOP;
 input DO_START;
-input READ_WRITE;
+input DO_READ;
+input DO_WRITE;
 begin
-	wait(RDY);
-	@(negedge CLK)
-	DI = DATA;
-	XC_RQ = 1'b1;
+	//IF start send addr+r/w
 	if(DO_START) begin
-	   CMD = COMMAND_START;
-	   while(~RDY) @(negedge CLK);
-       wait(RDY);
-       @(negedge CLK)
-       CMD = COMMAND_WR;
-       XC_RQ = 1'b1;
-       //wait for ack/nack
-	end
-	else begin
-        while(~RDY) @(negedge CLK);
+		wait(RDY);
+        @(negedge CLK)
+        CMD = COMMAND_START;
+        XC_RQ = 1'b1;
+        ACK_I = ACK;
+        wait(~RDY) @(negedge CLK);
+        XC_RQ = 1'b0;
+        DI = 8'hxx;
+        ACK_I = 1'bx;
+        CMD = 2'bxx;
+        wait(RDY);
+        XC_RQ = 1'b1;
+        DI = DATA;
+        CMD = COMMAND_WR;
+        wait(~RDY) @(negedge CLK);
+        XC_RQ = 1'b0;
+        DI = 8'hxx;
+        CMD = 2'bxx;
+        ACK_I = 1'bx;
+    end
+
+    if(DO_READ) begin
         wait(RDY);
         @(negedge CLK)
-        if(READ_WRITE) begin
-            CMD = COMMAND_RD;
-            while(~RDY) @(negedge CLK);
-            wait(RDY);
-            @(negedge CLK)
-            ACK_I = ACK;
-        end
-        else
-            CMD = COMMAND_WR;
-            XC_RQ = 1'b1;
-            //wait for ack/nack
-	end
+        CMD = COMMAND_RD;
+        DI = DATA;
+        ACK_I = ACK;
+        XC_RQ = 1'b1;
+        wait(~RDY) @(negedge CLK);
+        XC_RQ = 1'b0;
+        DI = 8'hxx;
+        CMD = 2'bxx;
+        ACK_I = 1'bx;
+    end
+    else if(DO_WRITE) begin
+        wait(RDY);
+        @(negedge CLK)
+        CMD = COMMAND_WR;
+        DI = DATA;
+        XC_RQ = 1'b1;
+        ACK_I = ACK;
+        wait(~RDY) @(negedge CLK);
+        XC_RQ = 1'b0;
+        DI = 8'hxx;
+        CMD = 2'bxx;
+        ACK_I = 1'bx;
+    end
     
-	@(negedge CLK)
-	XC_RQ = 1'b0;
-	DI = 8'hxx;
-	ACK_I = 1'bx;
-
+    if(DO_STOP) begin
+        wait(RDY);
+        @(negedge CLK)
+        CMD = COMMAND_STOP;
+        XC_RQ = 1'b1;
+        ACK_I = ACK;
+        wait(~RDY) @(negedge CLK);
+        XC_RQ = 1'b0;
+        DI = 8'hxx;
+        ACK_I = 1'bx;
+        CMD = 2'bxx;
+    end
+   
 	while(~RDY) @(negedge CLK);
 	if(DO_STOP == 1'b1)
 		$display("%6t: I2C Stop symbol sent", $time);

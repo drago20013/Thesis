@@ -1,5 +1,3 @@
-//TODO: add condition for clock streaching
-//TODO: separate timing logic (CE or divider ticks and/or half/qaurter ticks, FD)
 `timescale 1ns / 100ps
 
 module i2c_controller_master_v2(
@@ -23,7 +21,7 @@ localparam FDV_W = 11;
 input wire clk;
 input wire reset_n;
 input wire activate;
-input wire [2:0] command;
+input wire [1:0] command;
 input wire [FDV_W-1:0] divider;
 input wire [7:0] data_in;
 input wire ack_i;
@@ -46,14 +44,13 @@ reg data_phase;
 reg [8:0] current_transmit, next_transmit; 
 reg [8:0] current_receive, next_receive; 
 reg [FDV_W-1:0] fdv;
-reg [2:0] current_command, next_command;
+reg [1:0] current_command, next_command;
 reg [3:0] current_bit, next_bit; //How many bits we tx/rx yet
-reg current_byte_processed, next_byte_processed, ready_reg;
+reg current_byte_processed, next_byte_processed, ready_reg, next_ready_reg;
 wire sda_assert, nack;
 wire [15:0] half_tick, quarter_tick;
 wire fdv_en;
 wire ce;
-wire bit_ce;
 
 //LOCAL PARAMETERS
 localparam [4:0]
@@ -71,9 +68,10 @@ localparam [4:0]
     STATE_DATA_2 = 11,
     STATE_DATA_3 = 12,
     STATE_DATA_4 = 13,
-    STATE_DATA_END = 14;
+    STATE_DATA_END = 14,
+    STATE_REPEATED_START = 15;
 
-localparam [2:0]
+localparam [1:0]
     COMMAND_START = 0,
     COMMAND_STOP = 1,
     COMMAND_WR = 2,
@@ -92,7 +90,6 @@ assign byte_processed = current_byte_processed;
 
 assign fdv_en = ~ready;
 assign ce = fdv[FDV_W-1];
-assign bit_ce = ce & (current_state == STATE_DATA_3);
 
 always @(*) begin
     next_state = current_state;
@@ -101,21 +98,19 @@ always @(*) begin
     next_receive = current_receive;
     next_command = current_command;
     next_byte_processed = current_byte_processed;
-    ready_reg = 1'b0;
+    next_ready_reg = 1'b0;
     next_sda = 1'b1;
     next_scl = 1'b1;
     data_phase = 1'b0;
 
     case (current_state)
         STATE_IDLE: begin
-            ready_reg = 1'b1;
+            next_ready_reg = 1'b1;
             if(activate && command == COMMAND_START) begin
-                next_transmit = {data_in, nack};
                 next_state = STATE_START_1;
             end
         end
         STATE_START_1: begin
-            next_sda = 1'b0;
             if(ce) next_state = STATE_START_2;
         end
         STATE_START_2: begin
@@ -124,7 +119,6 @@ always @(*) begin
         end
         STATE_START_3: begin
             next_sda = 1'b0;
-            next_scl = 1'b0;
             if(ce) next_state = STATE_START_4;
         end            
         STATE_START_4: begin
@@ -133,14 +127,15 @@ always @(*) begin
             if(ce) next_state = STATE_HOLD;
         end   
         STATE_HOLD: begin
-            ready_reg = 1'b1;
-            next_sda = 1'b0;
+            next_ready_reg = 1'b1;
             next_scl = 1'b0;
+            next_sda = 1'b0;
             if(activate) begin
                 next_command = command;
+                next_transmit = {data_in, nack};
                 case (command)
                     COMMAND_START: begin
-                        next_state = STATE_START_1;
+                        next_state = STATE_REPEATED_START;
                     end
                     COMMAND_STOP: begin
                         next_state = STATE_STOP_1;
@@ -152,6 +147,10 @@ always @(*) begin
                 endcase
             end
         end
+        STATE_REPEATED_START: begin
+            next_scl = 1'b0;
+            if(ce) next_state = STATE_START_1;
+        end  
         STATE_DATA_1: begin
             next_sda = current_transmit[8];
             next_scl = 1'b0;
@@ -187,11 +186,36 @@ always @(*) begin
             end
         end
         STATE_DATA_END: begin
-            next_sda = 1'b0;
             next_scl = 1'b0;
+            next_sda = 1'b0;
+            data_phase = 1'b1;
             if(ce) begin
                 next_byte_processed = 1'b0;
                 next_state = STATE_HOLD;
+            end
+        end
+        STATE_STOP_1: begin
+            next_sda = 1'b0;
+            next_scl = 1'b0;
+            if(ce) begin
+                next_state = STATE_STOP_2;
+            end
+        end
+        STATE_STOP_2: begin
+            next_sda = 1'b0;
+            if(ce) begin
+               next_state = STATE_STOP_3;
+            end
+        end
+        STATE_STOP_3: begin
+            next_sda = 1'b0;
+            if(ce) begin
+               next_state = STATE_STOP_4;
+            end
+        end
+        STATE_STOP_4: begin
+            if(ce) begin
+               next_state = STATE_IDLE;
             end
         end
     endcase
@@ -210,9 +234,9 @@ always @(posedge clk or negedge reset_n) begin
         current_bit <= 4'b0;
         current_receive <= 9'b0;
         current_transmit <= 9'b0;
-        current_command <= 3'b0;
+        current_command <= 2'b0;
         current_byte_processed <= 1'b0;
-        ready_reg <= 0;
+        ready_reg <= 1'b0;
     end else begin
         //OUTPUT LINES
         current_sda <= next_sda;
@@ -225,6 +249,7 @@ always @(posedge clk or negedge reset_n) begin
         current_transmit <= next_transmit;
         current_command <= next_command;
         current_byte_processed <= next_byte_processed;
+        ready_reg <= next_ready_reg;
         
         fdv <= ((fdv_en & ~fdv[10]) ? fdv : divider) + {FDV_W{1'b1}};
 

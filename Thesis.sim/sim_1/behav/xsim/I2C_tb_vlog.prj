@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  \
+verilog xil_defaultlib  -i "../../../../Thesis.srcs/sources_1/imports/tv80_lib" \
 "../../../../Thesis.srcs/sources_1/imports/i2c_core/i2c_bhv.v" \
 "../../../../Thesis.srcs/sources_1/imports/Thesis-master/i2c_controller_master_version2.v" \
 "../../../../Thesis.srcs/sim_1/imports/i2c_core/i2c_tb.v" \

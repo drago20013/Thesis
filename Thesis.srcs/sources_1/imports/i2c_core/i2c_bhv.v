@@ -106,15 +106,15 @@ endspecify
 always @(SDA) begin	
 	if(SCL === 1'b1) begin
 		if((SDA_LAST === 1'b1) && (SDA === 1'b0)) begin
-			$display("%m (%t): Start condition recievd",$time);
+			$display("%m(%t): Start condition recievd",$time);
 			STATE = `READY;
 		end
 		else if((SDA_LAST === 1'b0) && (SDA === 1'b1)) begin
-			$display("%m (%t): Stop condition recievd",$time);
+			$display("%m(%t): Stop condition recievd",$time);
 			STATE = `IDLE;	
 		end
 		else if((SDA !== 1'b0) && (SDA !== 1'b1)) begin
-			$display("%m (%t): Undefined state on SDA line - Going into IDLE state.", $time);
+			$display("%m(%t): Undefined state on SDA line - Going into IDLE state.", $time);
 			STATE = `IDLE;
 		end
 	end
@@ -123,13 +123,13 @@ always @(SDA) begin
 	if(SCL === 1'b1) begin			 		
 		if(SDA === 1'b0) begin
 			if(DY < SCL_H_TO_SDA_L) begin
-				$display("%m (%t) - START condition time violation.\nExpected %t\nObserved %t.", $time, SCL_H_TO_SDA_L, DY);
+				$display("%m(%t) - START condition time violation.\nExpected %t\nObserved %t.", $time, SCL_H_TO_SDA_L, DY);
 				$stop;
 			end
 		end
 		if(SDA === 1'b1) begin
 			if(DY < SCL_H_TO_SDA_H) begin
-				$display("%m (%t) - STOP condition time violation.\nExpected %t\nObserved %t.", $time, SCL_H_TO_SDA_H, DY);
+				$display("%m(%t) - STOP condition time violation.\nExpected %t\nObserved %t.", $time, SCL_H_TO_SDA_H, DY);
 				$stop;
 			end			
 		end
@@ -201,11 +201,11 @@ always @(SCL) begin
 		`DATA_RD_ACK: begin
 			if(ACK == 1'b0) begin
 				STATE = `DATA_RD_7;
-				$display("%m (%t): READ operation canfirmed (ACK = 0) Going into DATA_READ state.", $time);
+				$display("%m(%t): READ operation canfirmed (ACK = 0) Going into DATA_READ state.", $time);
 			end
 			else begin
 				STATE = `IDLE;
-				$display("%m (%t): READ operation canceled (ACK = 1) Going into IDLE state.", $time);
+				$display("%m(%t): READ operation canceled (ACK = 1) Going into IDLE state.", $time);
 			end
 			//Data RD ACK - further operation
 		end
@@ -240,18 +240,18 @@ always @(SCL) begin
 	//SCL 0 -> 1 
 	if((SCL_LAST === 1'b0) && (SCL === 1'b1)) begin		
 		if(SCL_WIDTH < SCL_LO) begin
-			$display("%m (%t) - SCL low width time violation.\nExpected %t\nObserved %t.", $time, SCL_LO,  SCL_WIDTH);
+			$display("%m(%t) - SCL low width time violation.\nExpected %t\nObserved %t.", $time, SCL_LO,  SCL_WIDTH);
 			$stop;
 		end
 		if(SDA_SETUP < SDA_SU) begin
-			$display("%m (%t) - SDA to SCL setup time violation.\nExpected %t\nObserved %t.", $time, SDA_SU, SDA_SETUP);
+			$display("%m(%t) - SDA to SCL setup time violation.\nExpected %t\nObserved %t.", $time, SDA_SU, SDA_SETUP);
 			$stop;
 		end		
 	end
 	//SCL 1 -> 0
 	if((SCL_LAST === 1'b1) && (SCL === 1'b0)) begin
 		if(SCL_WIDTH < SCL_HI) begin
-			$display("%m (%t) - SCL high width time violation.\nExpected %t\nObserved %t.", $time, SCL_HI, SCL_WIDTH);
+			$display("%m(%t) - SCL high width time violation.\nExpected %t\nObserved %t.", $time, SCL_HI, SCL_WIDTH);
 			$stop;
 		end
 	end	
